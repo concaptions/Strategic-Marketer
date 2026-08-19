@@ -1,0 +1,66 @@
+/* pov: build additions for the Next.js site. Uses only the tokens from globals.css. */
+
+.pov-slider-wrap{max-width:900px;margin:0 auto;text-align:left}
+.pov-slider{
+  --pos:50%;
+  position:relative;overflow:hidden;border-radius:var(--radius);
+  border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow-card);
+  min-height:320px;user-select:none;touch-action:pan-y;cursor:ew-resize;
+}
+.pov-pane{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr}
+.pov-pane-inner{padding:1.9rem}
+.pov-pane-bad{background:var(--card);position:relative}
+.pov-pane-bad .pov-pane-inner{grid-column:1;padding-right:4.2rem}
+.pov-pane-good{
+  background:linear-gradient(160deg,var(--card-2),var(--card));
+  clip-path:inset(0 0 0 var(--pos));
+  -webkit-clip-path:inset(0 0 0 var(--pos));
+}
+.pov-pane-good .pov-pane-inner{grid-column:2;padding-left:4.2rem}
+.pov-pane-good::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(420px 260px at 85% 30%,rgba(233,185,92,.10),transparent 70%);
+}
+/* Pane typography mirrors the original .pov-card rules (same sizes/colours) */
+.pov-pane h3{margin-bottom:1rem;display:flex;align-items:center;gap:.6em}
+.pov-pane-bad h3{color:var(--muted)}
+.pov-pane-good h3{color:var(--gold-hi)}
+.pov-pane ul{list-style:none}
+.pov-pane li{padding:.34rem 0 .34rem 1.6rem;position:relative;color:var(--muted);font-size:.97rem}
+.pov-pane-bad li::before{content:"×";position:absolute;left:0;color:var(--muted-2);font-weight:700}
+.pov-pane-good li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+.pov-tag{
+  display:inline-block;font-family:var(--display);font-weight:600;font-size:.66rem;letter-spacing:.22em;
+  text-transform:uppercase;margin-bottom:.9rem;padding:.35em .8em;border-radius:999px;border:1px solid var(--line);
+}
+.pov-pane-bad .pov-tag{color:var(--muted-2)}
+.pov-pane-good .pov-tag{color:var(--gold);border-color:var(--line-gold);background:rgba(233,185,92,.08)}
+
+.pov-divider{
+  position:absolute;top:0;bottom:0;left:var(--pos);width:2px;transform:translateX(-1px);
+  background:linear-gradient(var(--gold-deep),var(--gold-hi),var(--gold-deep));
+  box-shadow:0 0 18px rgba(233,185,92,.55);pointer-events:none;
+}
+.pov-knob{
+  position:absolute;top:50%;left:var(--pos);width:46px;height:46px;transform:translate(-50%,-50%);
+  border-radius:50%;border:none;cursor:ew-resize;
+  background:linear-gradient(120deg,var(--gold-hi),var(--gold) 60%,var(--gold-deep));color:#171207;
+  box-shadow:0 8px 30px rgba(233,185,92,.35),inset 0 1px 0 rgba(255,255,255,.5);
+  display:flex;align-items:center;justify-content:center;
+  transition:box-shadow .2s ease;
+}
+.pov-knob svg{width:20px;height:20px}
+.pov-knob:hover,.pov-slider:hover .pov-knob{box-shadow:0 14px 40px rgba(233,185,92,.45),inset 0 1px 0 rgba(255,255,255,.5)}
+.pov-knob:focus-visible{outline:3px solid var(--gold-hi);outline-offset:3px}
+.pov-hint{text-align:center;margin-top:1rem;font-size:.78rem;color:var(--muted-2);letter-spacing:.04em}
+.pov-slider.is-touched + .pov-hint{opacity:.5}
+
+/* Keep the slider on desktop/tablet; stacked cards on phones */
+.pov-stack{display:none}
+@media (max-width:760px){
+  .pov-slider-wrap{display:none}
+  .pov-stack{display:grid}
+}
+@media (prefers-reduced-motion:reduce){
+  .pov-knob{transition:none}
+}

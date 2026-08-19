@@ -646,11 +646,11 @@ footer{border-top:1px solid var(--line);padding:64px 0 40px;background:var(--nig
 /* "Draws on" row is always reserved (no row-height jump); hover/focus lights it up */
 .act-card-live{display:flex;flex-direction:column}
 .act-card-live p{flex:1}
-.act-more{display:flex;flex-direction:column;align-items:flex-start;gap:.55em;margin-top:1.15rem;padding-top:1rem;border-top:1px solid var(--line);opacity:.55;transition:opacity .35s ease,border-color .35s ease}
-.act-card:hover .act-more,.act-card:focus-within .act-more,.act-card:focus .act-more{opacity:1;border-top-color:var(--line-gold)}
-.act-more-k{font-family:var(--display);font-weight:600;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2)}
+.act-more{display:flex;flex-direction:column;align-items:flex-start;gap:.55em;margin-top:1.15rem;padding-top:1rem;border-top:1px solid var(--line);opacity:1;transition:border-color .35s ease}
+.act-card:hover .act-more,.act-card:focus-within .act-more,.act-card:focus .act-more{border-top-color:var(--line-gold)}
+.act-more-k{font-family:var(--display);font-weight:600;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .act-chips{display:flex;gap:.4em;flex-wrap:wrap}
-.act-chip{font-size:.74rem;font-weight:600;color:var(--muted);background:rgba(233,185,92,.05);border:1px solid var(--line);border-radius:999px;padding:.28em .75em;transition:color .35s ease,border-color .35s ease,background .35s ease}
+.act-chip{font-size:.74rem;font-weight:600;color:var(--ink);background:rgba(233,185,92,.07);border:1px solid var(--line-gold);border-radius:999px;padding:.28em .75em;transition:color .35s ease,border-color .35s ease,background .35s ease}
 .act-card:hover .act-chip,.act-card:focus-within .act-chip,.act-card:focus .act-chip{color:var(--gold-hi);border-color:var(--line-gold);background:rgba(233,185,92,.08)}
 .act-card:hover .ic,.act-card:focus-within .ic{box-shadow:0 0 18px rgba(233,185,92,.35)}
 .act-card .ic{transition:box-shadow .3s ease}
@@ -659,3 +659,20 @@ footer{border-top:1px solid var(--line);padding:64px 0 40px;background:var(--nig
   .is-live *,.loop-card-live *{animation:none!important}
   .node-tip,.act-more,.loop li,.loop li::before{transition:none}
 }
+
+/* Industries marquee: gold separators bigger (Shahzaib, 2026-08-19) */
+.m-sep{font-size:1.15rem;opacity:.9}
+
+/* Industries marquee: livelier (Shahzaib, 2026-08-19 "looks good but not lively") —
+   brighter items, faster rows, twinkling gold separators, soft glow on hover. */
+.m-item{color:var(--muted)}
+.marquee-track{animation-duration:34s}
+.marquee.reverse .marquee-track{animation-duration:40s}
+@keyframes twinkle{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.35);text-shadow:0 0 10px rgba(233,185,92,.9)}}
+.m-sep{display:inline-block;animation:twinkle 2.6s ease-in-out infinite}
+.m-sep:nth-child(4n+2){animation-delay:.4s}
+.m-sep:nth-child(4n+4){animation-delay:.9s}
+.m-sep:nth-child(4n+6){animation-delay:1.4s}
+.m-sep:nth-child(4n+8){animation-delay:1.9s}
+.m-item:hover{text-shadow:0 0 18px rgba(233,185,92,.45)}
+@media (prefers-reduced-motion:reduce){.m-sep{animation:none}}

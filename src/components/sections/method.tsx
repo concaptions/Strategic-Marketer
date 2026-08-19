@@ -25,7 +25,7 @@ export function Method() {
         <div className="method-stack">
           <div className="stack-core">
             <div className="k">The Foundation</div>
-            <div className="t">Business Intelligence Foundation</div>
+            <div className="t">Business Intelligence Agent</div>
             <div className="stack-chips">
               {FOUNDATION.map((f) => (
                 <span className="chip" key={f.label}>

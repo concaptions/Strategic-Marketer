@@ -1,0 +1,84 @@
+/* cycle: build additions for the Next.js site. Uses only the tokens from globals.css. No font-size/colour-token changes to existing elements. */
+
+/* ---------- The Experimentation Cycle — circular loop graphic (Problem section, right column) ---------- */
+.xc-card{
+  background:linear-gradient(160deg,var(--card),var(--night-3));
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:1.6rem 1.5rem 1.45rem;box-shadow:var(--shadow-card);
+  position:relative;overflow:hidden;isolation:isolate;
+  min-height:420px;display:flex;flex-direction:column;justify-content:center;
+}
+/* faint warm bloom behind the ring — depth, no imagery */
+.xc-card::before{
+  content:"";position:absolute;inset:-20% -10% auto;height:90%;pointer-events:none;z-index:-1;
+  background:radial-gradient(ellipse 55% 60% at 50% 45%,color-mix(in srgb,var(--gold) 9%,transparent),transparent 70%);
+}
+
+.xc-svg{display:block;width:calc(100% + 2rem);margin:0 -1rem;height:auto;overflow:visible}
+.is-compact .xc-svg{width:100%;max-width:360px;margin:0 auto}
+
+/* gradients (stop colours come from the tokens) */
+.xc-stop-a{stop-color:var(--gold);stop-opacity:.22}
+.xc-stop-b{stop-color:var(--gold);stop-opacity:.07}
+.xc-stop-c{stop-color:var(--gold);stop-opacity:0}
+.xc-stop-d{stop-color:var(--card-2);stop-opacity:.9}
+
+/* rings */
+.xc-ring{fill:none;stroke:var(--gold);stroke-opacity:.42;stroke-width:1.4}
+.xc-ring-dash{fill:none;stroke:var(--gold);stroke-opacity:.16;stroke-width:1;stroke-dasharray:2 7;stroke-linecap:round}
+.xc-center-glow{fill:url(#xcCenterGrad);opacity:.55}
+
+/* comet tail + marker */
+.xc-trail circle{fill:none;stroke:var(--gold-hi);stroke-width:3;stroke-linecap:butt}
+.xc-marker-halo{fill:var(--gold);opacity:.7}
+.xc-marker-core{fill:var(--gold-hi);opacity:.9}
+.xc-marker-dot{fill:var(--gold-hi)}
+
+/* nodes */
+.xc-halo{fill:var(--gold);opacity:0;transition:opacity .4s ease}
+.xc-badge{fill:var(--night);stroke:var(--gold);stroke-opacity:.85;stroke-width:1.5;transition:fill .4s ease,stroke .4s ease,stroke-opacity .4s ease}
+.xc-icon{fill:none;stroke:var(--gold);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;color:var(--gold);transition:stroke .4s ease,color .4s ease}
+.xc-label{font-family:var(--body);font-size:13px;font-weight:500;fill:var(--muted);transition:fill .4s ease}
+.xc-node.is-active .xc-halo{opacity:.5}
+.xc-node.is-active .xc-badge{fill:color-mix(in srgb,var(--gold) 18%,var(--night));stroke:var(--gold-hi);stroke-opacity:1}
+.xc-node.is-active .xc-icon{stroke:var(--gold-hi);color:var(--gold-hi)}
+.xc-node.is-active .xc-label{fill:var(--ink)}
+
+/* centre copy */
+.xc-eyebrow{font-family:var(--display);font-weight:600;font-size:9.5px;letter-spacing:.22em;fill:var(--gold)}
+.xc-punch{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.01em;fill:var(--ink)}
+.xc-punch.is-lap{animation:xcPunch 1.3s ease-out}
+@keyframes xcPunch{0%{fill:var(--ink)}30%{fill:var(--gold-hi)}100%{fill:var(--ink)}}
+
+/* repeat line (same scale/colour as the approved card's line) */
+.xc-repeat{margin-top:1.1rem;display:flex;justify-content:center;align-items:center;gap:.6em;font-size:.85rem;color:var(--gold);font-weight:600}
+.xc-repeat svg{width:16px;height:16px}
+.xc-repeat svg.is-spin{animation:xcSpin 1.1s ease-in-out}
+@keyframes xcSpin{to{transform:rotate(-360deg)}}
+
+/* compact legend — hidden on wide, shown when the labels are hidden */
+.xc-legend{display:none;list-style:none;margin:1rem auto 0;max-width:360px;grid-template-columns:1fr 1fr;gap:.55rem .9rem}
+.xc-legend li{display:flex;align-items:center;gap:.55em;font-size:.78rem;line-height:1.3;color:var(--muted);transition:color .4s ease}
+.xc-legend li.is-active{color:var(--ink)}
+.xc-legend-badge{flex:none;width:24px;height:24px;border-radius:50%;background:var(--night);border:1px solid var(--gold);display:grid;place-items:center;transition:box-shadow .4s ease,border-color .4s ease,background .4s ease}
+.xc-legend-badge svg{width:13px;height:13px;fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;color:var(--gold)}
+.xc-legend li.is-active .xc-legend-badge{border-color:var(--gold-hi);background:color-mix(in srgb,var(--gold) 18%,var(--night));box-shadow:0 0 12px color-mix(in srgb,var(--gold) 60%,transparent)}
+.xc-legend li.is-active .xc-legend-badge svg{stroke:var(--gold-hi);color:var(--gold-hi)}
+
+@media (max-width:640px){
+  .xc-card{padding:1.35rem 1.15rem 1.25rem;min-height:0}
+  .xc-label{display:none}
+  .xc-legend{display:grid}
+  .xc-eyebrow{font-size:11.5px}
+  .xc-punch{font-size:18px}
+  .xc-repeat{margin-top:1.15rem}
+}
+@media (max-width:400px){
+  .xc-legend{gap:.5rem .7rem}
+  .xc-legend li{font-size:.74rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .xc-card *{animation:none!important;transition:none!important}
+  .xc-card .xc-trail{display:none}
+}

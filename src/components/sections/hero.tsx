@@ -1,23 +1,12 @@
 import { site } from "@/lib/site";
+import { HeroBackdrop } from "@/components/visuals/hero-backdrop";
+import { HeroPops } from "@/components/visuals/hero-pops";
 
 export function Hero() {
   return (
     <section className="hero" id="top">
-      <div className="glow" aria-hidden="true" />
-      <svg className="threads" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-        <g stroke="rgba(233,185,92,.18)" strokeWidth="1.2" fill="none">
-          <path d="M720 700 C 640 520, 420 480, 220 430" />
-          <path d="M720 700 C 800 520, 1020 480, 1220 430" />
-          <path d="M720 700 C 690 560, 560 540, 400 560" />
-          <path d="M720 700 C 750 560, 880 540, 1040 560" />
-        </g>
-        <g fill="rgba(233,185,92,.5)">
-          <circle cx="220" cy="430" r="3" />
-          <circle cx="1220" cy="430" r="3" />
-          <circle cx="400" cy="560" r="2.5" />
-          <circle cx="1040" cy="560" r="2.5" />
-        </g>
-      </svg>
+      <HeroBackdrop />
+      <HeroPops />
       <div className="wrap hero-inner">
         <div className="eyebrow center">AI Systems for Established Businesses</div>
         {/* Loom 01:51: line 1 and line 2 each on their own line. */}

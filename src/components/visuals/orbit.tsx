@@ -162,7 +162,7 @@ export function Orbit() {
       <div className="core" style={{ left: L.cx, top: L.cy }}>
         <span className="core-halo" aria-hidden="true" />
         <div className="k">The Foundation</div>
-        <div className="t">Business Intelligence Foundation</div>
+        <div className="t">Business Intelligence Agent</div>
       </div>
 
       {L.inner.map((p, i) => {

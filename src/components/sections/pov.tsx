@@ -1,3 +1,6 @@
+import { PovSlider } from "@/components/visuals/pov-slider";
+import { POV_BAD, POV_GOOD } from "@/lib/pov";
+
 export function Pov() {
   return (
     <section className="pov" id="approach">
@@ -10,27 +13,29 @@ export function Pov() {
           Generic AI is like hiring the smartest person you&apos;ve ever met — and never telling them what your company
           does, who your customers are, or how you talk. They&apos;ll produce something. It just won&apos;t be yours.
         </p>
-        <div className="pov-cards">
+
+        {/* Desktop / tablet: before-after slider (Shahzaib round 2) */}
+        <div className="pov-slider-wrap">
+          <PovSlider />
+          <p className="pov-hint">Drag the handle to compare</p>
+        </div>
+
+        {/* Small screens: the two stacked cards */}
+        <div className="pov-cards pov-stack">
           <div className="pov-card bad">
-            <h3>AI without your business context</h3>
+            <h3>{POV_BAD.title}</h3>
             <ul>
-              <li>Generic output that could belong to anyone</li>
-              <li>Inconsistent messaging from tool to tool</li>
-              <li>Incorrect assumptions stated confidently</li>
-              <li>Off-brand tone that doesn&apos;t sound like you</li>
-              <li>Disconnected work that never compounds</li>
-              <li>Low-value automation of the wrong things</li>
+              {POV_BAD.items.map((t) => (
+                <li key={t}>{t}</li>
+              ))}
             </ul>
           </div>
           <div className="pov-card good">
-            <h3>AI built on your business foundation</h3>
+            <h3>{POV_GOOD.title}</h3>
             <ul>
-              <li>Your brand identity and voice, captured first</li>
-              <li>A single source of truth for approved facts</li>
-              <li>Your products, services and offers understood</li>
-              <li>Your customers and positioning built in</li>
-              <li>Consistent output across every channel</li>
-              <li>Systems that get smarter as you grow</li>
+              {POV_GOOD.items.map((t) => (
+                <li key={t}>{t}</li>
+              ))}
             </ul>
           </div>
         </div>

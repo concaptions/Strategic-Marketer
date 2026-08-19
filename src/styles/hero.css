@@ -1,0 +1,107 @@
+/* hero: build additions for the Next.js site. Uses only the tokens from globals.css. No font-size/colour-token changes to existing elements. */
+
+/* ---------- 1. Spacing: less air between the sticky header and the headline ---------- */
+.hero{padding:64px 0 84px}
+.hero .eyebrow{margin-bottom:.9rem}
+@media (max-width:760px){
+  .hero{padding:56px 0 60px}
+}
+
+/* ---------- 2. Living backdrop ---------- */
+.hero-backdrop{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+
+/* (b) the radial glow breathes */
+@keyframes heroGlowBreathe{
+  0%,100%{opacity:.82;transform:translateX(-50%) scale(1)}
+  50%{opacity:1;transform:translateX(-50%) scale(1.07)}
+}
+.hero-backdrop .glow{animation:heroGlowBreathe 11s ease-in-out infinite;will-change:transform,opacity}
+
+/* (a) pulses travelling the threads: a second SVG stacked exactly over the base threads, shown at full strength */
+.hero .threads.hero-pulses{opacity:1}
+
+/* (c) faint drifting gold particles */
+.hero-particles{position:absolute;inset:0}
+.hero-particle{
+  position:absolute;
+  width:var(--p-size,3px);height:var(--p-size,3px);border-radius:50%;
+  background:radial-gradient(circle at 40% 40%,var(--gold-hi),var(--gold) 55%,rgba(233,185,92,0) 100%);
+  box-shadow:0 0 8px rgba(233,185,92,.55);
+  opacity:0;
+  animation:heroParticleDrift var(--p-dur,20s) ease-in-out var(--p-delay,0s) infinite;
+  will-change:transform,opacity;
+}
+@keyframes heroParticleDrift{
+  0%{transform:translate(0,0) scale(.7);opacity:0}
+  18%{opacity:var(--p-o,.35)}
+  55%{transform:translate(calc(var(--p-dx,10px) * .55),-42px) scale(1)}
+  82%{opacity:var(--p-o,.35)}
+  100%{transform:translate(var(--p-dx,10px),-78px) scale(.75);opacity:0}
+}
+
+/* ---------- 3. Floating pop-cards around the copy (wide viewports only) ---------- */
+.hero-pops{display:none}
+@media (min-width:1100px){
+  .hero-pops{
+    display:block;position:absolute;inset:0;pointer-events:none;z-index:1;
+    --pop-inset:max(16px,calc(50% - 600px)); /* hugs the copy on wide screens, clamps to the edge on narrow ones */
+    --pop-stagger:0px;
+  }
+}
+@media (min-width:1280px){
+  .hero-pops{--pop-inset:max(36px,calc(50% - 600px));--pop-stagger:1px}
+}
+.hero-pop{
+  position:absolute;
+  opacity:0;
+  animation:heroPopIn .75s cubic-bezier(.22,.8,.3,1) var(--pop-delay,.4s) both;
+}
+.hero-pop-float{
+  animation:heroPopFloat var(--pop-period,6s) ease-in-out calc(var(--pop-delay,.4s) + .75s) infinite alternate;
+  will-change:transform;
+}
+.hero-pop-card{
+  display:flex;align-items:center;gap:.65rem;
+  padding:.62rem .85rem .62rem .65rem;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);
+  box-shadow:var(--shadow-card),inset 0 1px 0 rgba(255,255,255,.04);
+  font-family:var(--body);white-space:nowrap;
+}
+.hero-pop-icon{
+  flex:none;width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(233,185,92,.12);border:1px solid var(--line-gold);color:var(--gold);
+}
+.hero-pop-icon svg{width:14px;height:14px;display:block}
+.hero-pop-text{display:flex;flex-direction:column;line-height:1.3}
+.hero-pop-label{
+  display:flex;align-items:center;gap:.4rem;
+  font-size:.8rem;font-weight:600;color:var(--ink);letter-spacing:-.005em;
+}
+.hero-pop-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(124,194,75,.7);flex:none}
+.hero-pop-dot.gold{background:var(--gold);box-shadow:0 0 8px rgba(233,185,92,.7)}
+.hero-pop-sub{font-size:.72rem;color:var(--muted)}
+
+/* Positions: left/right of the centred copy, at the lead / CTA / chips levels (never beside the h1). */
+.hero-pop.p1{left:var(--pop-inset);top:37%;--pop-delay:.5s;--pop-period:6.4s}
+.hero-pop.p2{right:calc(var(--pop-inset) + 14 * var(--pop-stagger));top:42%;--pop-delay:.95s;--pop-period:7.6s}
+.hero-pop.p3{left:calc(var(--pop-inset) + 22 * var(--pop-stagger));top:63%;--pop-delay:1.4s;--pop-period:5.6s}
+.hero-pop.p4{right:var(--pop-inset);top:70%;--pop-delay:1.85s;--pop-period:7s}
+
+@keyframes heroPopIn{
+  from{opacity:0;transform:translateY(14px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes heroPopFloat{
+  from{transform:translateY(-5px)}
+  to{transform:translateY(5px)}
+}
+
+/* ---------- Reduced motion: everything static ---------- */
+@media (prefers-reduced-motion:reduce){
+  .hero-backdrop .glow{animation:none}
+  .hero .threads.hero-pulses{display:none}
+  .hero-particle{animation:none;opacity:var(--p-o,.35);transform:none}
+  .hero-pop{animation:none;opacity:1;transform:none}
+  .hero-pop-float{animation:none;transform:none}
+}
