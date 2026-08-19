@@ -11,14 +11,6 @@ export function Proof() {
           </p>
         </div>
 
-        <div className="logo-strip" aria-label="Client logos">
-          {Array.from({ length: 7 }).map((_, i) => (
-            <span className="logo-ph" key={i}>
-              Client Logo
-            </span>
-          ))}
-        </div>
-
         <div className="proof-grid">
           <div className="p-card quote">
             <div className="mark">&quot;</div>
