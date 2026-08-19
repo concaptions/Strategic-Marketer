@@ -13,15 +13,15 @@ export function Why() {
       <div className="wrap split">
         <div className="why-copy">
           <div className="eyebrow">Why Strategic Marketer</div>
-          <h2>We Don&apos;t Recommend AI Tools. We Make AI Useful.</h2>
+          <h2>We Don&apos;t Just Recommend AI. We Build It Into Your Business.</h2>
           <p style={{ marginTop: "1.2rem" }}>
-            Anyone can hand you a list of software. Very few can look at your business, understand how it actually
-            works, and install AI systems that fit it — then make sure they get used.
+            Plenty of people can hand you a list of software. We build our own technology, fit it to the way your
+            business actually works, install it, and stay until it is being used every day.
           </p>
           <p>
-            That&apos;s the difference 15+ years of building technology for real businesses makes. We&apos;ve been on
-            every side of this: <strong>software development, business strategy, implementation, training and coaching</strong>{" "}
-            — across hundreds of business categories.
+            That is what 15+ years of building technology for real businesses gives you:{" "}
+            <strong>software development, business strategy, implementation, training and coaching</strong>, all from
+            one team, across hundreds of business categories.
           </p>
           <div className="why-punch">
             Strategy without systems is a wish list. Systems without strategy is expensive noise. You need both —
