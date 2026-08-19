@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Strategic Marketer — Corporate Website
 
-## Getting Started
+Homepage build for Strategic Marketer (AI systems for established businesses), ported from the approved
+single-file HTML (`docs/source-strategic-marketer-homepage.html`) into Next.js so it can grow into a multi-page site.
 
-First, run the development server:
+**Design rule:** font sizes and the colour theme are the approved HTML's, unchanged. The whole source stylesheet lives in
+`src/app/globals.css`; everything added for this build sits at the bottom under `BUILD ADDITIONS` (widths, motion, small
+new elements only).
 
+## Stack
+- Next.js 16 (App Router) · TypeScript · Framer Motion · next/font (Archivo + Instrument Sans, same weights as the source)
+- Hosting: Vercel (import the GitHub repo; zero config)
+
+## Run
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # http://localhost:3000
+npx tsc --noEmit && npm run lint && npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Structure
+- `src/app/page.tsx` — section order
+- `src/components/sections/*` — one file per homepage section
+- `src/components/visuals/*` — experimentation-cycle (animated), orbit (Business Intelligence Foundation, live + hover explain), count-up
+- `src/lib/site.ts` — site name, URL, booking link (`bookingHref`), nav
+- `src/lib/methodology.ts` — the foundation / activation items and their hover explanations
+- `docs/` — client brief, Loom transcript, build plan, the source HTML
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Open items (need client input)
+- Booking link for "Schedule Your AI Business Assessment" (currently anchors to the assessment section)
+- Exit-intent form is not wired to an email provider
+- Stats are sample placeholders, labelled as such
+- Proof section uses layout placeholders (logos, testimonials, video)
+- Separate pages (For Agencies, Industries, About, Resources) pending content
