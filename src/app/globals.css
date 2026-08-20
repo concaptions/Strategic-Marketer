@@ -121,14 +121,19 @@ header{
 /* A true 16:9 cover, sized from BOTH box dimensions (container units), so
    the video fills the hero at every window size and zoom level - the old
    height-only sizing left a black band on short/zoomed viewports because
-   YouTube letterboxes against the iframe WIDTH. The 130% oversize crops the
-   iframe edges, taking YouTube's title bar and control/logo chrome out of
-   view; the iframe is exactly 16:9 so there are no internal bars at all. */
+   YouTube letterboxes against the iframe WIDTH.
+   TOP-ANCHORED crop (2026-08-20): the earlier symmetric 130% oversize cut
+   15%+ off the TOP of the picture and beheaded the speaker. Now the bleed is
+   fixed: 4rem above the hero (just enough to hide YouTube's title overlay)
+   and ALL remaining crop falls below the hero, where nothing important is -
+   the bottom bleed is always >=5rem so the control/logo chrome stays hidden
+   too. Horizontal bleed is at least 1rem per side. */
 .hero-video{container-type:size}
 .hero-video iframe{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  position:absolute;top:-4rem;left:50%;transform:translateX(-50%);
   aspect-ratio:16/9;border:0;
-  width:max(130cqw, calc(130cqh * 16 / 9));height:auto;
+  height:max(calc(100cqh + 9rem), calc((100cqw + 2rem) * 9 / 16));
+  width:auto;
 }
 .hero-video-shade{
   position:absolute;inset:0;
