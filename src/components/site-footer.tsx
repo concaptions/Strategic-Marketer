@@ -33,7 +33,7 @@ export function SiteFooter() {
                 Bring proven AI-powered solutions to your clients without building the technology, systems and
                 support infrastructure yourself.
               </p>
-              <a href="#agencies">Explore Agency Partnerships →</a>
+              <a href="/for-agencies">Explore Agency Partnerships →</a>
             </div>
           </div>
         </div>
