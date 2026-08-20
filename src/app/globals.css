@@ -120,7 +120,14 @@ header{
    the hero, darkened so the headline stays readable. The iframe fills the
    hero box; YouTube's internal letterbox bars are black and invisible here.
    Stacking: video (0) < glow/threads < .hero-inner (1). */
-.hero-video{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#000}
+/* Starts invisible; .is-live is added the moment frames actually play, so a
+   cold first load shows the styled backdrop instead of a flat black layer
+   (Shahzaib 2026-08-20: "On First Website Load it shows Dark"). */
+.hero-video{
+  position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#000;
+  opacity:0;transition:opacity 1.2s ease;
+}
+.hero-video.is-live{opacity:1}
 /* Sized to the VIDEO CONTENT, not the player frame (2026-08-20). David's
    video is cinematic 2.25:1 (streams: 640x284, 854x380) inside YouTube's
    16:9 player, so the player letterboxes it with black bars of
@@ -162,7 +169,13 @@ header{
 .hero-inner{position:relative;text-align:center;max-width:900px;margin:0 auto}
 .hero h1{margin:0 0 .35em}
 .hero h1 .l2{display:block}
-.hero .lead{margin:0 auto 2.3em}
+/* Brighter than the base --muted + a soft dark halo so the paragraph stays
+   readable over the bright video scenes (Shahzaib 2026-08-20: "Change Font
+   Color of this section to make it readable"). Scoped to the hero only. */
+.hero .lead{
+  margin:0 auto 2.3em;color:#EDF1FA;
+  text-shadow:0 1px 4px rgba(5,8,17,.8),0 2px 18px rgba(5,8,17,.55);
+}
 .hero-ctas{display:flex;gap:1em;justify-content:center;flex-wrap:wrap}
 .hero-micro{
   margin-top:2.6rem;font-family:var(--display);font-weight:600;font-size:.7rem;
