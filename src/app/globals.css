@@ -116,36 +116,19 @@ header{
 /* ============================================================
    HERO
    ============================================================ */
-/* Background video layer (David 2026-08-19): his YouTube pick looping behind
-   the hero, darkened so the headline stays readable. The iframe fills the
-   hero box; YouTube's internal letterbox bars are black and invisible here.
+/* Background video layer (David 2026-08-19): his pick looping behind the
+   hero, darkened so the headline stays readable.
+   2026-08-20: self-hosted <video> file (see hero-video.tsx for why the
+   YouTube iframe had to go). The poster frame paints with the first HTML, so
+   the hero is never a black hole while the video buffers. The raw file is
+   the full 2.25:1 picture - no letterbox bars, no player chrome - so plain
+   object-fit:cover is the whole sizing story; the slight top bias keeps
+   heads in frame on very wide windows.
    Stacking: video (0) < glow/threads < .hero-inner (1). */
-/* Starts invisible; .is-live is added the moment frames actually play, so a
-   cold first load shows the styled backdrop instead of a flat black layer
-   (Shahzaib 2026-08-20: "On First Website Load it shows Dark"). */
-.hero-video{
-  position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#000;
-  opacity:0;transition:opacity 1.2s ease;
-}
-.hero-video.is-live{opacity:1}
-/* Sized to the VIDEO CONTENT, not the player frame (2026-08-20). David's
-   video is cinematic 2.25:1 (streams: 640x284, 854x380) inside YouTube's
-   16:9 player, so the player letterboxes it with black bars of
-   (9/16 - 1/2.25)/2 = 5.9% of the frame width on top and bottom - THAT was
-   the "black patti" under the header (and it scales with the window, hence
-   worse on some machines). The math below places the CONTENT's top 12px above
-   the hero and makes the content itself cover the hero on both axes, so the
-   internal bars, YouTube's title overlay (inside the top bar) and the bottom
-   chrome all land outside the visible box. k=0.0595 is the bar fraction with
-   a hair of safety so a rounding of the true ratio can never leak a bar back
-   in. Total top crop of the picture is ~13px - nobody's head gets cut. */
-.hero-video{container-type:size}
-.hero-video iframe{
-  --w:max(calc(100cqw + 2rem), calc((100cqh + 2rem) * 2.25));
-  position:absolute;left:50%;transform:translateX(-50%);
-  top:calc(-0.75rem - 0.0595 * var(--w));
-  aspect-ratio:16/9;border:0;
-  width:var(--w);height:auto;
+.hero-video{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#000}
+.hero-video-el{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:50% 18%;
 }
 .hero-video-shade{
   position:absolute;inset:0;
