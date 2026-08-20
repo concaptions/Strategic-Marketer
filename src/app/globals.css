@@ -118,22 +118,24 @@ header{
    hero box; YouTube's internal letterbox bars are black and invisible here.
    Stacking: video (0) < glow/threads < .hero-inner (1). */
 .hero-video{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#000}
-/* A true 16:9 cover, sized from BOTH box dimensions (container units), so
-   the video fills the hero at every window size and zoom level - the old
-   height-only sizing left a black band on short/zoomed viewports because
-   YouTube letterboxes against the iframe WIDTH.
-   TOP-ANCHORED crop (2026-08-20): the earlier symmetric 130% oversize cut
-   15%+ off the TOP of the picture and beheaded the speaker. Now the bleed is
-   fixed: 4rem above the hero (just enough to hide YouTube's title overlay)
-   and ALL remaining crop falls below the hero, where nothing important is -
-   the bottom bleed is always >=5rem so the control/logo chrome stays hidden
-   too. Horizontal bleed is at least 1rem per side. */
+/* Sized to the VIDEO CONTENT, not the player frame (2026-08-20). David's
+   video is cinematic 2.25:1 (streams: 640x284, 854x380) inside YouTube's
+   16:9 player, so the player letterboxes it with black bars of
+   (9/16 - 1/2.25)/2 = 5.9% of the frame width on top and bottom - THAT was
+   the "black patti" under the header (and it scales with the window, hence
+   worse on some machines). The math below places the CONTENT's top 12px above
+   the hero and makes the content itself cover the hero on both axes, so the
+   internal bars, YouTube's title overlay (inside the top bar) and the bottom
+   chrome all land outside the visible box. k=0.0595 is the bar fraction with
+   a hair of safety so a rounding of the true ratio can never leak a bar back
+   in. Total top crop of the picture is ~13px - nobody's head gets cut. */
 .hero-video{container-type:size}
 .hero-video iframe{
-  position:absolute;top:-4rem;left:50%;transform:translateX(-50%);
+  --w:max(calc(100cqw + 2rem), calc((100cqh + 2rem) * 2.25));
+  position:absolute;left:50%;transform:translateX(-50%);
+  top:calc(-0.75rem - 0.0595 * var(--w));
   aspect-ratio:16/9;border:0;
-  height:max(calc(100cqh + 9rem), calc((100cqw + 2rem) * 9 / 16));
-  width:auto;
+  width:var(--w);height:auto;
 }
 .hero-video-shade{
   position:absolute;inset:0;
