@@ -25,7 +25,7 @@ import { useEffect, useRef, useState } from "react";
  */
 const VIDEO_ID = "UpctIM8hvV4";
 const START_AT = 1.6; // skip the dark intro; every loop re-enters here
-const WRAP_BEFORE_END = 0.75; // seek back this long before the end
+const WRAP_BEFORE_END = 1.2; // seek back this long before the end
 
 type YTPlayer = {
   mute: () => void;
@@ -53,6 +53,7 @@ export function HeroVideo() {
   useEffect(() => {
     let player: YTPlayer | undefined;
     let watcher: ReturnType<typeof setInterval> | undefined;
+    let onMsg: ((ev: MessageEvent) => void) | undefined;
     let cancelled = false;
 
     const create = () => {
@@ -76,9 +77,7 @@ export function HeroVideo() {
             e.target.mute();
             e.target.seekTo(START_AT, true);
             e.target.playVideo();
-            // wrap shortly before the end so ENDED (and its end screen)
-            // never happens and the loop looks seamless
-            watcher = setInterval(() => {
+            const wrap = () => {
               try {
                 const d = e.target.getDuration();
                 if (d > 0 && e.target.getCurrentTime() > d - WRAP_BEFORE_END) {
@@ -87,7 +86,18 @@ export function HeroVideo() {
               } catch {
                 /* player mid-teardown */
               }
-            }, 300);
+            };
+            // wrap shortly before the end so ENDED (and its end screen)
+            // never happens and the loop looks seamless. Driven by the
+            // player's own infoDelivery messages (~4/s) because a plain
+            // interval gets throttled in background/occluded tabs and can
+            // miss the window; the interval stays as a fallback.
+            onMsg = (ev: MessageEvent) => {
+              if (typeof ev.data !== "string" || !ev.data.includes("infoDelivery")) return;
+              wrap();
+            };
+            window.addEventListener("message", onMsg);
+            watcher = setInterval(wrap, 250);
           },
           onStateChange: (e: { data: number; target: YTPlayer }) => {
             const S = window.YT?.PlayerState;
@@ -122,6 +132,7 @@ export function HeroVideo() {
     return () => {
       cancelled = true;
       if (watcher) clearInterval(watcher);
+      if (onMsg) window.removeEventListener("message", onMsg);
       try {
         player?.destroy();
       } catch {
