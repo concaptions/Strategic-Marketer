@@ -1,7 +1,7 @@
 type Props = { size?: number; compact?: boolean; href?: string };
 
 /** Strategic Marketer wordmark + gear-bulb mark, ported from the approved HTML. */
-export function Logo({ size = 36, compact = false, href = "#top" }: Props) {
+export function Logo({ size = 36, compact = false, href = "/" }: Props) {
   return (
     <a className="logo" href={href} aria-label="Strategic Marketer home">
       <svg viewBox="0 0 48 48" fill="none" aria-hidden="true" style={{ width: size, height: size }}>
