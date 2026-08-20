@@ -4,8 +4,8 @@ import { useCallback, useRef, useState } from "react";
 import { POV_BAD, POV_GOOD } from "@/lib/pov";
 
 
-const MIN = 8;
-const MAX = 92;
+const MIN = 4;
+const MAX = 96;
 
 /**
  * Before/after comparison slider for the Point of View section.
@@ -15,7 +15,7 @@ const MAX = 92;
  */
 export function PovSlider() {
   const ref = useRef<HTMLDivElement>(null);
-  const [pos, setPos] = useState(88);
+  const [pos, setPos] = useState(94);
   const [touched, setTouched] = useState(false);
   const dragging = useRef(false);
 

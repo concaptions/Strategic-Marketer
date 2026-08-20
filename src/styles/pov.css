@@ -2,14 +2,14 @@
 
 .pov-slider-wrap{max-width:900px;margin:0 auto;text-align:left}
 .pov-slider{
-  --pos:88%;
+  --pos:94%;
   position:relative;overflow:hidden;border-radius:var(--radius);
   border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow-card);
-  min-height:330px;user-select:none;touch-action:pan-y;cursor:ew-resize;
+  min-height:300px;user-select:none;touch-action:pan-y;cursor:ew-resize;
 }
 /* Both panes fill the card; content centred at the same width so the two states line up */
 .pov-pane{position:absolute;inset:0}
-.pov-pane-inner{max-width:620px;margin:0 auto;padding:2rem 2.2rem}
+.pov-pane-inner{padding:2rem 2.4rem}
 .pov-pane-bad{background:var(--card)}
 .pov-pane-good{
   background:linear-gradient(160deg,var(--card-2),var(--card));
@@ -24,8 +24,8 @@
 .pov-pane h3{margin-bottom:1rem;display:flex;align-items:center;gap:.6em}
 .pov-pane-bad h3{color:var(--muted)}
 .pov-pane-good h3{color:var(--gold-hi)}
-.pov-pane ul{list-style:none}
-.pov-pane li{padding:.34rem 0 .34rem 1.6rem;position:relative;color:var(--muted);font-size:.97rem}
+.pov-pane ul{list-style:none;columns:2;column-gap:2.6rem}
+.pov-pane li{padding:.34rem 0 .34rem 1.6rem;position:relative;color:var(--muted);font-size:.97rem;break-inside:avoid}
 .pov-pane-bad li::before{content:"×";position:absolute;left:0;color:var(--muted-2);font-weight:700}
 .pov-pane-good li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
 .pov-tag{
