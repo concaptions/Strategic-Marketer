@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { site } from "@/lib/site";
 
 /* Placeholder copy throughout (Zuria 2026-08-20) except the approved H1 -
@@ -45,12 +45,14 @@ const REASONS = [
 ];
 
 export function AgencyContent() {
-  const reduce = useReducedMotion();
+  /* Zuria 2026-08-20: reveals run on EVERY machine - the OS reduced-motion
+     guard hid them on Windows setups with animations disabled, and the page
+     read as static. Slightly slower + deeper so the motion is visible. */
   const up = (delay = 0) => ({
-    initial: reduce ? undefined : { opacity: 0, y: 26 },
-    whileInView: reduce ? undefined : { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.3 },
-    transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] as const },
+    initial: { opacity: 0, y: 36 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.25 },
+    transition: { duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] as const },
   });
 
   return (
