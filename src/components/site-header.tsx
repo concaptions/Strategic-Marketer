@@ -30,7 +30,7 @@ export function SiteHeader() {
               {n.label}
             </a>
           ))}
-          <a className="agencies" href="#agencies">
+          <a className="agencies" href="/for-agencies">
             For Agencies
           </a>
         </nav>
@@ -56,7 +56,7 @@ export function SiteHeader() {
               {n.label}
             </a>
           ))}
-          <a href="#agencies" onClick={() => setOpen(false)}>
+          <a href="/for-agencies" onClick={() => setOpen(false)}>
             For Agencies
           </a>
           <a className="btn btn-gold btn-sm" href={site.bookingHref} onClick={() => setOpen(false)}>
