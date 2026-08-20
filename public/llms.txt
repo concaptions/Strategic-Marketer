@@ -1,0 +1,14 @@
+# Strategic Marketer
+
+> Strategic Marketer helps established businesses identify, install and activate practical AI systems built around their brand, their knowledge, their customers and their growth priorities, not around the latest tool.
+
+Strategic Marketer installs AI systems for established businesses: a Business Intelligence Agent that captures the company's brand voice, offers, customers and positioning, then powers content creation, follow-up, automation and internal knowledge. The engagement starts with an AI Business Assessment, a consultative conversation that produces a clear diagnosis and a prioritized roadmap.
+
+## Pages
+
+- [Home](https://strategic-marketer.vercel.app/): What Strategic Marketer does, the Business Intelligence Agent methodology, the AI Business Assessment, client results and industries served.
+- [For Agencies](https://strategic-marketer.vercel.app/for-agencies): Licensing program for agencies that want to deliver proven AI-powered solutions to their clients under their own brand without building the technology themselves.
+
+## Contact
+
+- Booking: https://strategic-marketer.vercel.app/#contact
