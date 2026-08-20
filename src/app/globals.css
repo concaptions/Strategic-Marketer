@@ -705,3 +705,68 @@ footer{border-top:1px solid var(--line);padding:64px 0 40px;background:var(--nig
 .m-sep:nth-child(4n+8){animation-delay:1.9s}
 .m-item:hover{text-shadow:0 0 18px rgba(233,185,92,.45)}
 @media (prefers-reduced-motion:reduce){.m-sep{animation:none}}
+
+/* ============================================================
+   Round 3 (Zuria, 2026-08-20)
+   ============================================================ */
+
+/* 8: equal, tighter rhythm between sections */
+.problem,.stats,.pov,.activation,.assessment,.proof,.industries,.why{padding-top:80px;padding-bottom:80px}
+.method{padding-top:80px;padding-bottom:40px}
+.trust{padding:48px 0}
+.final{padding-top:96px;padding-bottom:96px}
+.stats-head{margin-bottom:2.6rem}
+.activation-head{margin-bottom:2.6rem}
+.proof-head{margin-bottom:2.6rem}
+.industries .head{margin-bottom:2.4rem}
+
+/* 1: close the hole between the orbit caption and the next section */
+.orbit-stage{margin-top:.6rem}
+.orbit-caption{margin-top:0}
+
+/* 6: the activation cards read as the agent actually working — one card "runs" at a time */
+.act-card-live{position:relative;animation:actCycle 9s linear infinite;animation-delay:calc(var(--i)*1.5s)}
+@keyframes actCycle{
+  0%,17.5%,100%{border-color:var(--line);box-shadow:none}
+  5%,12%{border-color:var(--line-gold);box-shadow:0 0 30px rgba(233,185,92,.14),0 10px 30px rgba(3,6,15,.4)}
+}
+.act-live{
+  position:absolute;top:1.15rem;right:1.15rem;width:8px;height:8px;border-radius:50%;
+  background:var(--green);box-shadow:0 0 10px rgba(124,194,75,.8);
+  animation:actLivePulse 2.2s ease-in-out infinite;animation-delay:calc(var(--i)*1.5s);
+}
+@keyframes actLivePulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:1;transform:scale(1.25)}}
+
+/* 3: assessment — built to convert, not just describe */
+.steps li::before{
+  content:counter(step,decimal-leading-zero);
+  font-size:.95rem;width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;
+  border-radius:50%;border:1px solid var(--line-gold);background:rgba(233,185,92,.08);color:var(--gold-hi);
+  top:0;text-align:center;letter-spacing:0;
+  transition:background .25s ease,box-shadow .25s ease;
+}
+.steps li{padding-left:3.9rem;transition:transform .25s ease}
+.steps li::after{left:1.25rem;top:2.7rem;bottom:.4rem}
+.steps li:hover{transform:translateX(4px)}
+.steps li:hover::before{background:rgba(233,185,92,.18);box-shadow:0 0 18px rgba(233,185,92,.35)}
+.steps li:hover h3{color:var(--gold-hi)}
+.steps h3{transition:color .25s ease}
+.assess-points{list-style:none;margin:0 0 1.7rem;text-align:left}
+.assess-points li{padding:.32rem 0 .32rem 1.7rem;position:relative;color:var(--muted);font-size:.95rem}
+.assess-points li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+.assessment-card{box-shadow:var(--shadow-card),0 0 70px rgba(233,185,92,.14)}
+.assessment-card .btn-gold{animation:ctaBreath 3.2s ease-in-out infinite}
+@keyframes ctaBreath{
+  0%,100%{box-shadow:0 8px 30px rgba(233,185,92,.35),inset 0 1px 0 rgba(255,255,255,.5)}
+  50%{box-shadow:0 10px 46px rgba(233,185,92,.6),inset 0 1px 0 rgba(255,255,255,.5)}
+}
+.assess-note{margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted-2);text-align:center}
+.assess-note b{color:var(--muted)}
+
+/* 7: why — end the argument with the ask */
+.why-cta{margin-top:2rem}
+
+@media (prefers-reduced-motion:reduce){
+  .act-card-live,.act-live,.assessment-card .btn-gold{animation:none}
+  .steps li,.steps li::before,.steps h3{transition:none}
+}

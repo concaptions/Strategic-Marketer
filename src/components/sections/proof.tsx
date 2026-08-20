@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { TESTIMONIALS } from "@/lib/testimonials";
 
-/** Wall of Proof: real testimonials from strategicmarketer.com + the Inc. Magazine recognition. */
+/** Wall of Proof: real testimonials from strategicmarketer.com. */
 export function Proof() {
   const reduce = useReducedMotion();
   return (
@@ -20,38 +20,25 @@ export function Proof() {
         </div>
 
         <div className="proof-wall">
-          <motion.div
-            className="p-card award proof-award"
-            initial={reduce ? false : { opacity: 0, y: 16 }}
-            whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
-            <div className="laurel">🏆</div>
-            <h3 style={{ fontSize: "1rem" }}>Inc. Magazine</h3>
-            <p>Twice named among America&apos;s fastest-growing private companies</p>
-          </motion.div>
-
           {TESTIMONIALS.map((t, i) => (
             <motion.figure
               key={t.name}
-              className="p-card quote proof-quote"
+              className="proof-quote"
               initial={reduce ? false : { opacity: 0, y: 16 }}
               whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: "easeOut" }}
             >
-              <div className="mark">&quot;</div>
+              <figcaption className="proof-who">
+                <Image src={t.photo} alt={t.name} width={48} height={48} className="proof-avatar" />
+                <b>{t.name}</b>
+                <svg className="proof-qicon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M4 14c0-4.4 2.6-7.7 6.5-9l.9 1.8C8.9 8 7.6 9.6 7.3 11.4c.3-.1.7-.2 1.2-.2 1.9 0 3.3 1.4 3.3 3.3 0 2-1.5 3.5-3.6 3.5C5.7 18 4 16.3 4 14zm9.6 0c0-4.4 2.6-7.7 6.5-9l.9 1.8c-2.5 1.2-3.8 2.8-4.1 4.6.3-.1.7-.2 1.2-.2 1.9 0 3.3 1.4 3.3 3.3 0 2-1.5 3.5-3.6 3.5-2.5 0-4.2-1.7-4.2-4z" />
+                </svg>
+              </figcaption>
               <blockquote>
                 <p>{t.quote}</p>
               </blockquote>
-              <figcaption className="proof-who">
-                <Image src={t.photo} alt={t.name} width={44} height={44} className="proof-avatar" />
-                <b>{t.name}</b>
-                <span className="proof-star" aria-hidden="true">
-                  ✦
-                </span>
-              </figcaption>
             </motion.figure>
           ))}
         </div>

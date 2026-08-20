@@ -32,3 +32,6 @@
   .stat-top{gap:.6rem}
   .stat-gauge{width:56px;height:56px}
 }
+
+/* Round 3: "The Market Reality" eyebrow one point bigger (Zuria item 4) */
+.stats .eyebrow{font-size:calc(.72rem + 1px)}

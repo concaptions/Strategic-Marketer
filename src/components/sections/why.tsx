@@ -1,3 +1,5 @@
+import { site } from "@/lib/site";
+
 const PILLARS = [
   { h: "15+ Years of Technology", p: "Building software and business systems long before the AI headlines." },
   { h: "Proprietary Technology", p: "Systems we built and refined ourselves — not repackaged third-party tools." },
@@ -15,17 +17,22 @@ export function Why() {
           <div className="eyebrow">Why Strategic Marketer</div>
           <h2>We Don&apos;t Just Recommend AI. We Build It Into Your Business.</h2>
           <p style={{ marginTop: "1.2rem" }}>
-            Plenty of people can hand you a list of software. We build our own technology, fit it to the way your
-            business actually works, install it, and stay until it is being used every day.
+            Most consultants hand you a list of AI tools and leave. We do the opposite: we build the technology
+            ourselves, set it up around the way your business already runs, and stay until your team is using it
+            every day.
           </p>
           <p>
-            That is what 15+ years of building technology for real businesses gives you:{" "}
-            <strong>software development, business strategy, implementation, training and coaching</strong>, all from
-            one team, across hundreds of business categories.
+            Behind that is 15+ years of <strong>building software, strategy, implementation, training and coaching</strong>{" "}
+            for real businesses across hundreds of industries.
           </p>
           <div className="why-punch">
             Strategy without systems is a wish list. Systems without strategy is expensive noise. You need both —
             working together.
+          </div>
+          <div className="why-cta">
+            <a className="btn btn-gold" href={site.bookingHref}>
+              See What We&apos;d Build for Your Business
+            </a>
           </div>
         </div>
         <div className="pillars">

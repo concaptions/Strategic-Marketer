@@ -17,7 +17,7 @@ export function Pov() {
         {/* Desktop / tablet: before-after slider (Shahzaib round 2) */}
         <div className="pov-slider-wrap">
           <PovSlider />
-          <p className="pov-hint">Drag the handle to compare</p>
+          <p className="pov-hint">Slide the handle to see the difference</p>
         </div>
 
         {/* Small screens: the two stacked cards */}

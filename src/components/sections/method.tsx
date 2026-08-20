@@ -8,11 +8,11 @@ export function Method() {
         <div className="method-head">
           {/* Loom 04:16: "Everything we install starts here" becomes the eyebrow; the rest becomes the sub headline. */}
           <div className="eyebrow center">Everything We Install Starts Here</div>
-          <h2>The Business Intelligence Foundation</h2>
+          <h2>The Business Intelligence Agent</h2>
         </div>
         <p className="method-sub">
-          A structured foundation of what makes your business <em>your business</em> — powering every AI system that
-          follows.
+          Your agent is the foundation of what makes your business <em>your business</em> — powering every AI system
+          that follows.
         </p>
 
         {/* Radial visual (desktop / tablet) */}

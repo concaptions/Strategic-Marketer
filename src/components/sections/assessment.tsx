@@ -34,13 +34,21 @@ export function Assessment() {
         <div className="assessment-card">
           <div className="eyebrow">AI Business Assessment</div>
           <h3>Find Out What AI Should Actually Look Like Inside Your Company.</h3>
-          <p>One conversation. A clear diagnosis. A prioritized roadmap built around the way your business actually works.</p>
+          <p>Here is what you walk away with, whether or not we ever work together:</p>
+          <ul className="assess-points">
+            <li>A clear diagnosis of what is holding AI back in your business</li>
+            <li>The two or three places AI would pay for itself first</li>
+            <li>A prioritized roadmap you keep either way</li>
+          </ul>
           <a className="btn btn-gold" href={site.bookingHref}>
             Schedule Your AI Business Assessment
           </a>
           <p className="micro">
             No pressure and no obligation. If we&apos;re not the right fit, we&apos;ll tell you — and point you in a
             better direction.
+          </p>
+          <p className="assess-note">
+            <b>One conversation.</b> That is all it takes to know what AI should look like inside your company.
           </p>
         </div>
       </div>

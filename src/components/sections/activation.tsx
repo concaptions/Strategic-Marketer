@@ -107,11 +107,13 @@ export function Activation() {
               key={c.title}
               className="act-card act-card-live"
               tabIndex={0}
+              style={{ ["--i" as string]: i }}
               initial={reduce ? false : { opacity: 0, y: 18 }}
               whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.55, delay: (i % 3) * 0.1 + Math.floor(i / 3) * 0.15, ease: "easeOut" }}
             >
+              <span className="act-live" aria-hidden="true" />
               <div className="ic">{c.icon}</div>
               <h3>{c.title}</h3>
               <p>{c.text}</p>
@@ -130,7 +132,7 @@ export function Activation() {
         </div>
         <div className="act-foot">
           <span className="dot" />
-          Every capability above draws from the same Business Intelligence Foundation — which is why the results stay
+          Every capability above draws from the same Business Intelligence Agent — which is why the results stay
           consistent instead of drifting apart.
         </div>
       </div>

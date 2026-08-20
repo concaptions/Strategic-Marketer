@@ -1,7 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useInView, useReducedMotion } from "framer-motion";
+import { useCallback, useRef, useState } from "react";
 import { POV_BAD, POV_GOOD } from "@/lib/pov";
 
 
@@ -9,32 +8,16 @@ const MIN = 8;
 const MAX = 92;
 
 /**
- * Before/after comparison slider for the Point of View section (Shahzaib: "a slider here will be better").
- * Left = AI without context (muted), right = AI on your foundation (gold). The gold pane is revealed by a
- * clip-path driven by the handle. Drag (pointer), keyboard (arrows / Home / End). Sways gently until the
- * first interaction; reduced motion = static at 50%.
+ * Before/after comparison slider for the Point of View section.
+ * Round 3: one state at a time — the "without" pane fills the card by default (handle parked right);
+ * dragging the handle left sweeps the gold "with" pane across it. Drag (pointer), keyboard
+ * (arrows / Home / End). The knob pulses until the first interaction.
  */
 export function PovSlider() {
   const ref = useRef<HTMLDivElement>(null);
-  const [pos, setPos] = useState(50);
+  const [pos, setPos] = useState(88);
   const [touched, setTouched] = useState(false);
   const dragging = useRef(false);
-  const inView = useInView(ref, { amount: 0.4 });
-  const reduce = useReducedMotion();
-
-  // Gentle auto-sway until the visitor takes over.
-  useEffect(() => {
-    if (reduce || touched || !inView) return;
-    let raf = 0;
-    const t0 = performance.now();
-    const tick = (now: number) => {
-      const t = (now - t0) / 1000;
-      setPos(50 + 6 * Math.sin(t * 0.55));
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [reduce, touched, inView]);
 
   const setFromClientX = useCallback((clientX: number) => {
     const el = ref.current;
