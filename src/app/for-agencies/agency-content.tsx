@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { site } from "@/lib/site";
+import { AgencyPops } from "@/components/visuals/agency-pops";
 
 /* Placeholder copy throughout (Zuria 2026-08-20) except the approved H1 -
    see page.tsx. Reveals follow the homepage idiom: fade-up on scroll with
@@ -60,6 +62,8 @@ export function AgencyContent() {
       {/* compact hero: the doc's ONE approved line is the headline */}
       <section className="hero agn-hero" id="top">
         <div className="glow" aria-hidden />
+        {/* Zuria 2026-08-20: same moveable pop cards as the homepage hero */}
+        <AgencyPops />
         <div className="wrap hero-inner">
           <motion.p className="eyebrow center" {...up(0)}>
             For Agencies
@@ -79,9 +83,9 @@ export function AgencyContent() {
             <a className="btn btn-gold" href={site.bookingHref}>
               Book a Conversation
             </a>
-            <a className="btn btn-ghost" href="/">
+            <Link className="btn btn-ghost" href="/">
               Back to Strategic Marketer
-            </a>
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -140,11 +144,14 @@ export function AgencyContent() {
               support. Licensing it means your clients get it this quarter.
             </p>
           </motion.div>
-          <motion.ul className="assess-points agn-points" {...up(0.15)}>
-            {REASONS.map((r) => (
-              <li key={r}>{r}</li>
+          <ul className="assess-points agn-points">
+            {/* checkmarks land one by one instead of as a single block */}
+            {REASONS.map((r, i) => (
+              <motion.li key={r} {...up(0.15 + i * 0.14)}>
+                {r}
+              </motion.li>
             ))}
-          </motion.ul>
+          </ul>
         </div>
       </section>
 

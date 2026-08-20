@@ -804,3 +804,14 @@ header{background:#000;backdrop-filter:none;-webkit-backdrop-filter:none}
 .nav-links{color:#fff}
 .nav-links a.agencies{color:#fff}
 .nav-links a:hover,.nav-links a.agencies:hover{color:var(--gold-hi)}
+
+/* ------------------------------------------------------------
+   Round 6b (Zuria, 2026-08-20): the For Agencies page gets the homepage's
+   life - moveable pop cards (markup in agency-pops.tsx, styles reused from
+   styles/hero.css), a breathing hero glow and a breathing closing CTA.
+   ------------------------------------------------------------ */
+.agn-hero .glow{animation:heroGlowBreathe 11s ease-in-out infinite;will-change:transform,opacity}
+.agn-cta .btn-gold{animation:ctaBreath 3.2s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){
+  .agn-hero .glow,.agn-cta .btn-gold{animation:none}
+}
