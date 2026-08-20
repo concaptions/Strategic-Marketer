@@ -488,7 +488,7 @@ header{
 footer{border-top:1px solid var(--line);padding:64px 0 40px;background:var(--night)}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr;gap:3rem;margin-bottom:3rem}
 .foot-grid p{font-size:.9rem;color:var(--muted);margin-top:1rem;max-width:300px}
-.foot-col h4{
+.foot-col .foot-h{
   font-family:var(--display);font-weight:600;font-size:.7rem;letter-spacing:.2em;
   text-transform:uppercase;color:var(--muted-2);margin-bottom:1.1rem;
 }
@@ -497,7 +497,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 40px;background:var(--nig
 .agency-box{
   background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);padding:1.4rem;
 }
-.agency-box h4{color:var(--gold);margin-bottom:.6rem}
+.agency-box .agency-h{color:var(--gold);margin-bottom:.6rem}
 .agency-box p{font-size:.85rem;color:var(--muted);margin:0 0 1rem;max-width:none}
 .agency-box a{font-size:.88rem;font-weight:600;color:var(--gold-hi)}
 .foot-base{

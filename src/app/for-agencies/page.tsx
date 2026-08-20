@@ -16,6 +16,16 @@ export const metadata: Metadata = {
   title: "For Agencies | Strategic Marketer",
   description:
     "Bring proven AI-powered solutions to your clients without building the technology, systems and support infrastructure yourself.",
+  // Without these the page inherits the root canonical/og:url and tells
+  // crawlers it IS the homepage.
+  alternates: { canonical: "/for-agencies" },
+  openGraph: {
+    title: "For Agencies | Strategic Marketer",
+    description:
+      "Bring proven AI-powered solutions to your clients without building the technology, systems and support infrastructure yourself.",
+    url: "/for-agencies",
+    type: "website",
+  },
 };
 
 export default function ForAgenciesPage() {

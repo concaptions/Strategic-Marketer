@@ -3,8 +3,9 @@ export const site = {
   // Canonical URL is a placeholder until the domain decision is made.
   url: "https://strategic-marketer.vercel.app",
   title: "Strategic Marketer | Stop Experimenting With AI. Start Putting It to Work.",
+  // Meta description kept under 160 characters for search snippets.
   description:
-    "Strategic Marketer helps established businesses identify, install and activate practical AI systems built around their brand, their knowledge, their customers and their growth priorities, not around the latest tool.",
+    "Strategic Marketer helps established businesses identify, install and activate practical AI systems built around their brand, knowledge and growth priorities.",
   // Booking destination: the contact form (Round 6, Shahzaib "redirect to a form; connect scheduling later").
   bookingHref: "/#contact",
 };
