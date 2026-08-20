@@ -1,46 +1,94 @@
-/* why: build additions (round 4) — visible redesign of the Why section. Tokens only. */
+/* why: build additions (round 5) — centred "build pipeline" layout. Tokens only. */
 
-/* Pillar cards: gold icon tile, top accent, hover lift, sequential "alive" shimmer */
-.pillars-live .pillar{
-  position:relative;overflow:hidden;
-  background:linear-gradient(165deg,var(--card-2),var(--card) 60%);
-  transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease;
-}
-.pillars-live .pillar::before{
-  content:"";position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,rgba(233,185,92,.55),transparent);
-  opacity:0;transition:opacity .25s ease;
-}
-.pillars-live .pillar:hover{border-color:var(--line-gold);transform:translateY(-3px);box-shadow:var(--shadow-card),0 0 26px rgba(233,185,92,.10)}
-.pillars-live .pillar:hover::before{opacity:1}
-.pillar-ic{
-  width:36px;height:36px;border-radius:10px;margin-bottom:.9rem;
-  background:rgba(233,185,92,.10);border:1px solid var(--line-gold);
-  display:flex;align-items:center;justify-content:center;color:var(--gold);
-  animation:pillarGlow 12s linear infinite;animation-delay:calc(var(--i)*2s);
-}
-.pillar-ic svg{width:19px;height:19px}
-@keyframes pillarGlow{
-  0%,14%,100%{box-shadow:none}
-  4%,9%{box-shadow:0 0 16px rgba(233,185,92,.5)}
-}
+.why-v3{text-align:center}
+.why-head{max-width:820px;margin:0 auto}
+.why-head .lead{max-width:640px}
 
-/* Punch quote: bigger, framed, with a large gold quote mark */
-.why-punch-xl{
-  position:relative;margin-top:2.2rem;padding:1.7rem 1.9rem 1.7rem 3.4rem;
+/* ---------- Pipeline: 5 connected steps ---------- */
+.pipeline{
+  position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem;
+  max-width:1080px;margin:3.4rem auto 0;
+}
+.pipeline-rail{
+  position:absolute;left:6%;right:6%;top:29px;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(233,185,92,.35) 12%,rgba(233,185,92,.35) 88%,transparent);
+  pointer-events:none;overflow:visible;
+}
+.pipeline-pulse{
+  position:absolute;top:50%;left:0;width:64px;height:4px;border-radius:999px;transform:translateY(-50%);
+  background:linear-gradient(90deg,transparent,var(--gold-hi),transparent);
+  box-shadow:0 0 14px rgba(233,185,92,.7);
+  animation:railRun 6s linear infinite;
+}
+@keyframes railRun{from{left:-8%}to{left:104%}}
+.pipe-node{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;z-index:1}
+.pipe-ic{
+  width:58px;height:58px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,rgba(248,212,138,.22),rgba(20,28,51,.95) 70%);
+  border:1.5px solid var(--line-gold);color:var(--gold-hi);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 26px rgba(3,6,15,.5),0 0 22px rgba(233,185,92,.12);
+  transition:box-shadow .25s ease,transform .25s ease,border-color .25s ease;
+}
+.pipe-ic svg{width:24px;height:24px}
+.pipe-node:hover .pipe-ic{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 12px 32px rgba(3,6,15,.55),0 0 34px rgba(233,185,92,.3)}
+.pipe-node b{
+  font-family:var(--display);font-weight:700;font-size:1.02rem;color:var(--ink);
+  margin-top:1rem;letter-spacing:-.01em;
+}
+.pipe-node p{font-size:.86rem;color:var(--muted);margin-top:.35rem;max-width:200px;line-height:1.5}
+
+/* ---------- Credentials row ---------- */
+.cred-row{
+  display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;
+  max-width:900px;margin:3rem auto 0;
+}
+.cred{
+  display:inline-flex;align-items:center;gap:.55em;
+  font-size:.82rem;font-weight:500;color:var(--muted);
+  background:rgba(20,28,51,.7);border:1px solid var(--line);border-radius:999px;
+  padding:.5em 1.05em;transition:color .2s ease,border-color .2s ease;
+}
+.cred:hover{color:var(--gold-hi);border-color:var(--line-gold)}
+.cred-ic{display:flex;color:var(--gold)}
+.cred-ic svg{width:14px;height:14px}
+
+/* ---------- Punch quote + CTA, centred ---------- */
+.why-punch-center{
+  position:relative;max-width:680px;margin:3rem auto 0;text-align:left;
+  padding:1.7rem 1.9rem 1.7rem 3.4rem;
   border-left:3px solid var(--gold);
   background:linear-gradient(160deg,rgba(233,185,92,.10),rgba(233,185,92,.03));
   border-radius:0 var(--radius-sm) var(--radius-sm) 0;
   box-shadow:0 0 40px rgba(233,185,92,.06);
+  font-family:var(--display);font-weight:700;font-size:1.15rem;line-height:1.4;
 }
 .why-punch-mark{
   position:absolute;left:.7rem;top:.4rem;
   font-family:var(--display);font-weight:800;font-size:2.6rem;line-height:1;color:var(--gold);
 }
-.why-cta{margin-top:2rem}
-.why-cta-micro{text-align:left;margin-top:.9rem}
+.why-cta-center{margin-top:2.4rem}
+.why-cta-center .micro{margin-top:.9rem}
 
+/* ---------- Responsive ---------- */
+@media (max-width:1024px){
+  .pipeline{grid-template-columns:repeat(3,1fr);row-gap:2.2rem}
+  .pipeline-rail{display:none}
+}
+@media (max-width:760px){
+  .pipeline{grid-template-columns:1fr;gap:1.6rem;max-width:340px}
+  .pipe-node{flex-direction:row;text-align:left;gap:1rem;align-items:flex-start}
+  .pipe-node b{margin-top:0}
+  .pipe-node .pipe-ic{flex:none}
+  .pipe-node p{max-width:none}
+  .pipe-node b,.pipe-node p{display:block}
+  .pipe-node{display:grid;grid-template-columns:58px 1fr;column-gap:1rem}
+  .pipe-node b{grid-column:2}
+  .pipe-node p{grid-column:2}
+  .pipe-node .pipe-ic{grid-row:1 / span 2}
+  .why-punch-center{font-size:1.05rem}
+}
 @media (prefers-reduced-motion:reduce){
-  .pillar-ic{animation:none}
-  .pillars-live .pillar{transition:none}
+  .pipeline-pulse{animation:none;display:none}
+  .pipe-ic,.cred{transition:none}
 }

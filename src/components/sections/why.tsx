@@ -12,50 +12,42 @@ const stroke = {
   strokeLinejoin: "round" as const,
 };
 
-const PILLARS: { h: string; p: string; icon: ReactNode }[] = [
+/** The promise of the headline, as a pipeline: we don't recommend — we build it in. */
+const PIPELINE: { word: string; line: string; icon: ReactNode }[] = [
   {
-    h: "15+ Years of Technology",
-    p: "Building software and business systems long before the AI headlines.",
+    word: "Build It",
+    line: "Our own technology — not repackaged third-party tools.",
     icon: (
       <svg viewBox="0 0 24 24" {...stroke}>
-        <circle cx="12" cy="12" r="8.5" />
-        <path d="M12 7.5V12l3 2" />
+        <path d="M14.5 6.5a4 4 0 0 0-5.6 5L4 16.4V20h3.6l4.9-4.9a4 4 0 0 0 5-5.6L14.6 12l-2.6-2.6z" />
       </svg>
     ),
   },
   {
-    h: "Proprietary Technology",
-    p: "Systems we built and refined ourselves — not repackaged third-party tools.",
+    word: "Fit It",
+    line: "Shaped around how your business already runs.",
     icon: (
       <svg viewBox="0 0 24 24" {...stroke}>
-        <rect x="4" y="4" width="16" height="16" rx="3" />
-        <path d="M9 12l2 2 4-4.5" />
+        <path d="M4 8h7v8H4z" />
+        <path d="M11 10h4V6h5v12h-5v-4h-4" />
       </svg>
     ),
   },
   {
-    h: "Business Strategy First",
-    p: "Every recommendation starts with how your business actually operates.",
+    word: "Install It",
+    line: "Activated inside your company — not left as advice.",
     icon: (
       <svg viewBox="0 0 24 24" {...stroke}>
-        <path d="M4 19.5h16" />
-        <path d="M6 16l4-4.5 3.5 2.5L18 8" />
-        <path d="M14.5 8H18v3.5" />
+        <path d="M12 3v9" />
+        <path d="M8 8.5 12 12l4-3.5" />
+        <rect x="4" y="14" width="16" height="6.5" rx="2" />
+        <circle cx="7.5" cy="17.2" r=".9" fill="currentColor" stroke="none" />
       </svg>
     ),
   },
   {
-    h: "Implementation Experience",
-    p: "We install and activate — the step where most AI initiatives quietly die.",
-    icon: (
-      <svg viewBox="0 0 24 24" {...stroke}>
-        <path d="M13.5 3.5 5 13h5l-1 7.5L18 11h-5.5z" />
-      </svg>
-    ),
-  },
-  {
-    h: "Training & Coaching",
-    p: "Your team learns to run the systems confidently, not just watch them.",
+    word: "Train Your Team",
+    line: "Your people learn to run it confidently.",
     icon: (
       <svg viewBox="0 0 24 24" {...stroke}>
         <circle cx="9" cy="8.5" r="3" />
@@ -65,8 +57,66 @@ const PILLARS: { h: string; p: string; icon: ReactNode }[] = [
     ),
   },
   {
-    h: "Cross-Industry Depth",
-    p: "Direct experience across dozens of business categories and models.",
+    word: "Stay On It",
+    line: "We stick around until it's working every day.",
+    icon: (
+      <svg viewBox="0 0 24 24" {...stroke}>
+        <path d="M12 20.5s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7.5 3.5c0 5.4-7.5 10-7.5 10z" />
+        <path d="M8.5 12h2l1.5-2.5 1.5 4 1.5-1.5h1.5" />
+      </svg>
+    ),
+  },
+];
+
+/** Credentials, compressed into a badge row (the old six pillar cards). */
+const CREDS: { label: string; icon: ReactNode }[] = [
+  {
+    label: "15+ Years of Technology",
+    icon: (
+      <svg viewBox="0 0 24 24" {...stroke}>
+        <circle cx="12" cy="12" r="8.5" />
+        <path d="M12 7.5V12l3 2" />
+      </svg>
+    ),
+  },
+  {
+    label: "Proprietary Technology",
+    icon: (
+      <svg viewBox="0 0 24 24" {...stroke}>
+        <rect x="4" y="4" width="16" height="16" rx="3" />
+        <path d="M9 12l2 2 4-4.5" />
+      </svg>
+    ),
+  },
+  {
+    label: "Business Strategy First",
+    icon: (
+      <svg viewBox="0 0 24 24" {...stroke}>
+        <path d="M4 19.5h16" />
+        <path d="M6 16l4-4.5 3.5 2.5L18 8" />
+        <path d="M14.5 8H18v3.5" />
+      </svg>
+    ),
+  },
+  {
+    label: "Implementation Experience",
+    icon: (
+      <svg viewBox="0 0 24 24" {...stroke}>
+        <path d="M13.5 3.5 5 13h5l-1 7.5L18 11h-5.5z" />
+      </svg>
+    ),
+  },
+  {
+    label: "Training & Coaching",
+    icon: (
+      <svg viewBox="0 0 24 24" {...stroke}>
+        <path d="M12 4 3 8.5l9 4.5 9-4.5z" />
+        <path d="M6.5 10.5V15c0 1.4 2.5 2.8 5.5 2.8s5.5-1.4 5.5-2.8v-4.5" />
+      </svg>
+    ),
+  },
+  {
+    label: "Cross-Industry Depth",
     icon: (
       <svg viewBox="0 0 24 24" {...stroke}>
         <path d="M3.5 20V9.5l5-3.5 5 3.5V20" />
@@ -80,50 +130,62 @@ const PILLARS: { h: string; p: string; icon: ReactNode }[] = [
 export function Why() {
   const reduce = useReducedMotion();
   return (
-    <section className="why">
-      <div className="wrap split">
-        <div className="why-copy">
-          <div className="eyebrow">Why Strategic Marketer</div>
+    <section className="why why-v3">
+      <div className="wrap">
+        <div className="why-head">
+          <div className="eyebrow center">Why Strategic Marketer</div>
           <h2>We Don&apos;t Just Recommend AI. We Build It Into Your Business.</h2>
-          <p style={{ marginTop: "1.2rem" }}>
-            Most consultants hand you a list of AI tools and leave. We do the opposite: we build the technology
-            ourselves, set it up around the way your business already runs, and stay until your team is using it
-            every day.
+          <p className="lead" style={{ margin: "1.2rem auto 0" }}>
+            Most consultants hand you a list of AI tools and leave. We do the opposite — and it shows in how we work:
           </p>
-          <p>
-            Behind that is 15+ years of <strong>building software, strategy, implementation, training and coaching</strong>{" "}
-            for real businesses across hundreds of industries.
-          </p>
-          <blockquote className="why-punch why-punch-xl">
-            <span className="why-punch-mark" aria-hidden="true">
-              &ldquo;
-            </span>
-            Strategy without systems is a wish list. Systems without strategy is expensive noise. You need both —
-            working together.
-          </blockquote>
-          <div className="why-cta">
-            <a className="btn btn-gold" href={site.bookingHref}>
-              See What We&apos;d Build for Your Business
-            </a>
-            <p className="micro why-cta-micro">Starts with one consultative conversation — the AI Business Assessment.</p>
-          </div>
         </div>
-        <div className="pillars pillars-live">
-          {PILLARS.map((p, i) => (
+
+        {/* The build pipeline — the headline, drawn */}
+        <div className="pipeline" role="list">
+          <span className="pipeline-rail" aria-hidden="true">
+            {!reduce && <span className="pipeline-pulse" />}
+          </span>
+          {PIPELINE.map((p, i) => (
             <motion.div
-              className="pillar"
-              key={p.h}
+              role="listitem"
+              className="pipe-node"
+              key={p.word}
               style={{ ["--i" as string]: i }}
-              initial={reduce ? false : { opacity: 0, y: 16 }}
+              initial={reduce ? false : { opacity: 0, y: 18 }}
               whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.45, delay: (i % 2) * 0.08 + Math.floor(i / 2) * 0.12, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.45, delay: i * 0.12, ease: "easeOut" }}
             >
-              <div className="pillar-ic">{p.icon}</div>
-              <h3>{p.h}</h3>
-              <p>{p.p}</p>
+              <span className="pipe-ic">{p.icon}</span>
+              <b>{p.word}</b>
+              <p>{p.line}</p>
             </motion.div>
           ))}
+        </div>
+
+        {/* Credentials, one quiet row */}
+        <div className="cred-row" aria-label="Experience">
+          {CREDS.map((c) => (
+            <span className="cred" key={c.label}>
+              <span className="cred-ic">{c.icon}</span>
+              {c.label}
+            </span>
+          ))}
+        </div>
+
+        <blockquote className="why-punch why-punch-center">
+          <span className="why-punch-mark" aria-hidden="true">
+            &ldquo;
+          </span>
+          Strategy without systems is a wish list. Systems without strategy is expensive noise. You need both —
+          working together.
+        </blockquote>
+
+        <div className="why-cta why-cta-center">
+          <a className="btn btn-gold" href={site.bookingHref}>
+            See What We&apos;d Build for Your Business
+          </a>
+          <p className="micro">Starts with one consultative conversation — the AI Business Assessment.</p>
         </div>
       </div>
     </section>
