@@ -812,3 +812,12 @@ footer{border-top:1px solid var(--line);padding:64px 0 40px;background:var(--nig
 .agn-cta-inner{text-align:center;max-width:640px;margin:0 auto}
 .agn-cta-inner .lead{margin:0 auto 2em}
 @media (max-width:860px){.agn-grid{grid-template-columns:1fr}.agn-why-inner{grid-template-columns:1fr;gap:1.6rem}}
+
+/* ------------------------------------------------------------
+   Round 6 (Zuria, 2026-08-20): header was see-through, content behind it
+   made the links unreadable. Solid black bar, white links, gold on hover.
+   ------------------------------------------------------------ */
+header{background:#000;backdrop-filter:none;-webkit-backdrop-filter:none}
+.nav-links{color:#fff}
+.nav-links a.agencies{color:#fff}
+.nav-links a:hover,.nav-links a.agencies:hover{color:var(--gold-hi)}
