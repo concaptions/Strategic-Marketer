@@ -1,10 +1,13 @@
 import { site } from "@/lib/site";
 import { HeroBackdrop } from "@/components/visuals/hero-backdrop";
+import { HeroVideo } from "@/components/visuals/hero-video";
 import { HeroPops } from "@/components/visuals/hero-pops";
 
 export function Hero() {
   return (
     <section className="hero" id="top">
+      {/* video sits at the very back; glow/threads render above it, content above those */}
+      <HeroVideo />
       <HeroBackdrop />
       <HeroPops />
       <div className="wrap hero-inner">

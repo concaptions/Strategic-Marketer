@@ -113,6 +113,27 @@ header{
 /* ============================================================
    HERO
    ============================================================ */
+/* Background video layer (David 2026-08-19): his YouTube pick looping behind
+   the hero, darkened so the headline stays readable. The iframe fills the
+   hero box; YouTube's internal letterbox bars are black and invisible here.
+   Stacking: video (0) < glow/threads < .hero-inner (1). */
+.hero-video{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#000}
+/* the iframe is 34% taller than the box and re-centred: YouTube anchors its
+   title bar (top) and logo (bottom-right) to the iframe edges, so both get
+   cropped away while the video itself stays centred and fully visible */
+.hero-video iframe{position:absolute;left:0;top:-17%;width:100%;height:134%;border:0}
+.hero-video-shade{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(10,10,12,.72),rgba(10,10,12,.6) 45%,rgba(10,10,12,.86));
+}
+.hero .glow,.hero .threads,.hero-particles{z-index:0}
+.hero-inner{z-index:1}
+@media (max-width:760px){
+  /* phones: autoplay is unreliable and the player payload heavy - the hero
+     falls back to the plain dark backdrop */
+  .hero-video{display:none}
+}
+
 .hero{padding:110px 0 90px;overflow:hidden}
 .hero .glow{
   position:absolute;left:50%;bottom:-320px;transform:translateX(-50%);
