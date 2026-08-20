@@ -118,10 +118,18 @@ header{
    hero box; YouTube's internal letterbox bars are black and invisible here.
    Stacking: video (0) < glow/threads < .hero-inner (1). */
 .hero-video{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#000}
-/* the iframe is 34% taller than the box and re-centred: YouTube anchors its
-   title bar (top) and logo (bottom-right) to the iframe edges, so both get
-   cropped away while the video itself stays centred and fully visible */
-.hero-video iframe{position:absolute;left:0;top:-17%;width:100%;height:134%;border:0}
+/* A true 16:9 cover, sized from BOTH box dimensions (container units), so
+   the video fills the hero at every window size and zoom level - the old
+   height-only sizing left a black band on short/zoomed viewports because
+   YouTube letterboxes against the iframe WIDTH. The 130% oversize crops the
+   iframe edges, taking YouTube's title bar and control/logo chrome out of
+   view; the iframe is exactly 16:9 so there are no internal bars at all. */
+.hero-video{container-type:size}
+.hero-video iframe{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  aspect-ratio:16/9;border:0;
+  width:max(130cqw, calc(130cqh * 16 / 9));height:auto;
+}
 .hero-video-shade{
   position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(10,10,12,.72),rgba(10,10,12,.6) 45%,rgba(10,10,12,.86));
