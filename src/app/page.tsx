@@ -14,6 +14,7 @@ import { Proof } from "@/components/sections/proof";
 import { Industries } from "@/components/sections/industries";
 import { Why } from "@/components/sections/why";
 import { FinalCta } from "@/components/sections/final-cta";
+import { ContactSection } from "@/components/sections/contact-form";
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
         <Industries />
         <Why />
         <FinalCta />
+        <ContactSection />
       </main>
       <SiteFooter />
       <StickyCta />

@@ -12,12 +12,12 @@ export function FinalCta() {
         </h2>
         <p className="lead">
           Schedule an AI Business Assessment and we&apos;ll help identify where AI can create the greatest opportunity
-          inside your business — and exactly what needs to happen next.
+          inside your business, and exactly what needs to happen next.
         </p>
         <a className="btn btn-gold" href={site.bookingHref}>
           Schedule My AI Business Assessment
         </a>
-        <p className="micro">A focused, consultative conversation — not a sales pitch. You&apos;ll leave with clarity either way.</p>
+        <p className="micro">A focused, consultative conversation, not a sales pitch. You&apos;ll leave with clarity either way.</p>
       </div>
     </section>
   );

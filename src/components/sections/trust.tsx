@@ -12,17 +12,18 @@ export function Trust() {
             <div className="trust-num">15+</div>
             <p>Years building software, marketing technology and business systems</p>
           </div>
+          {/* Round 6 (Shahzaib): the real numbers from the old strategicmarketer.com site */}
           <div className="trust-item">
-            <div className="trust-num">1,000s</div>
-            <p>Of businesses trained, coached and supported across dozens of industries</p>
+            <div className="trust-num">13,701+</div>
+            <p>Strategic customers served</p>
           </div>
           <div className="trust-item">
-            <div className="trust-num">Proven</div>
-            <p>A long track record of helping businesses and agencies use technology to grow</p>
+            <div className="trust-num">2,976+</div>
+            <p>Online income entrepreneurs coached</p>
           </div>
         </div>
         <p className="trust-note">
-          We were building business technology <strong>long before AI became the latest trend</strong> — which is
+          We were building business technology <strong>long before AI became the latest trend</strong>, which is
           exactly why we know the difference between what&apos;s impressive in a demo and what actually works inside a
           company.
         </p>

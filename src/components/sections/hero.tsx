@@ -19,7 +19,7 @@ export function Hero() {
         </h1>
         <p className="lead">
           Strategic Marketer helps established businesses identify, install and activate practical AI systems built
-          around their brand, their knowledge, their customers and their growth priorities — not around the latest
+          around their brand, their knowledge, their customers and their growth priorities, not around the latest
           tool.
         </p>
         <div className="hero-ctas">

@@ -17,7 +17,7 @@ const stroke = {
 const CARDS: Card[] = [
   {
     title: "Consistent Brand Visibility",
-    text: "Show up across channels with one voice — without becoming a full-time content creator.",
+    text: "Show up across channels with one voice, without becoming a full-time content creator.",
     drawsOn: ["Brand Identity", "Brand Voice"],
     icon: (
       <svg viewBox="0 0 24 24" {...stroke}>
@@ -28,7 +28,7 @@ const CARDS: Card[] = [
   },
   {
     title: "Better Content, Faster",
-    text: "Turn your real expertise into content that sounds like you — not like AI.",
+    text: "Turn your real expertise into content that sounds like you, not like AI.",
     drawsOn: ["Brand Voice", "Business Knowledge"],
     icon: (
       <svg viewBox="0 0 24 24" {...stroke}>
@@ -61,7 +61,7 @@ const CARDS: Card[] = [
   },
   {
     title: "Automated Repetitive Work",
-    text: "Remove the recurring tasks that drain your team — the right ones, in the right order.",
+    text: "Remove the recurring tasks that drain your team: the right ones, in the right order.",
     drawsOn: ["Business Knowledge", "Source of Truth"],
     icon: (
       <svg viewBox="0 0 24 24" {...stroke}>
@@ -73,7 +73,7 @@ const CARDS: Card[] = [
   },
   {
     title: "Centralized Business Knowledge",
-    text: "One trusted source of truth your whole company — and your AI — can rely on.",
+    text: "One trusted source of truth your whole company and your AI can rely on.",
     drawsOn: ["Source of Truth", "Business Knowledge"],
     icon: (
       <svg viewBox="0 0 24 24" {...stroke}>
@@ -132,7 +132,7 @@ export function Activation() {
         </div>
         <div className="act-foot">
           <span className="dot" />
-          Every capability above draws from the same Business Intelligence Agent — which is why the results stay
+          Every capability above draws from the same Business Intelligence Agent, which is why the results stay
           consistent instead of drifting apart.
         </div>
       </div>

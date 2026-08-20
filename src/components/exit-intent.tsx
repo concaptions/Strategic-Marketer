@@ -69,7 +69,7 @@ export function ExitIntent() {
           </form>
         ) : (
           <p className="success" style={{ display: "block" }}>
-            ✓ You&apos;re in — check your inbox for the training link.
+            ✓ You&apos;re in. Check your inbox for the training link.
           </p>
         )}
         <p className="fine">No spam. Unsubscribe anytime.</p>

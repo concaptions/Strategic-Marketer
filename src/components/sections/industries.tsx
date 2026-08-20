@@ -55,7 +55,7 @@ export function Industries() {
 
       <p className="recency wrap">
         <strong>Even in the last 90 days,</strong> we&apos;ve worked with businesses across home services, healthcare,
-        professional services, real estate, ecommerce and more. Different industries — the same missing foundation.
+        professional services, real estate, ecommerce and more. Different industries, the same missing foundation.
       </p>
     </section>
   );

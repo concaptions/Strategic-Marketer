@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Strategic Marketer — Stop Experimenting With AI. Start Putting It to Work.";
+export const alt = "Strategic Marketer | Stop Experimenting With AI. Start Putting It to Work.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

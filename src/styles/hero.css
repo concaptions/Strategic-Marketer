@@ -82,19 +82,26 @@
 .hero-pop-dot.gold{background:var(--gold);box-shadow:0 0 8px rgba(233,185,92,.7)}
 .hero-pop-sub{font-size:.72rem;color:var(--muted)}
 
-/* Positions: left/right of the centred copy, at the lead / CTA / chips levels (never beside the h1). */
-.hero-pop.p1{left:var(--pop-inset);top:37%;--pop-delay:.5s;--pop-period:6.4s}
-.hero-pop.p2{right:calc(var(--pop-inset) + 14 * var(--pop-stagger));top:42%;--pop-delay:.95s;--pop-period:7.6s}
-.hero-pop.p3{left:calc(var(--pop-inset) + 22 * var(--pop-stagger));top:63%;--pop-delay:1.4s;--pop-period:5.6s}
-.hero-pop.p4{right:var(--pop-inset);top:70%;--pop-delay:1.85s;--pop-period:7s}
+/* Positions: left/right of the centred copy, at the lead / CTA / chips levels (never beside the h1).
+   Round 6 (Shahzaib): cards wander around their anchor instead of bobbing in one place.
+   --drift flips the wander inward (left cards drift right, right cards drift left) so they never leave the side areas. */
+.hero-pop.p1{left:var(--pop-inset);top:37%;--pop-delay:.5s;--pop-period:13s;--drift:1}
+.hero-pop.p2{right:calc(var(--pop-inset) + 14 * var(--pop-stagger));top:42%;--pop-delay:.95s;--pop-period:16s;--drift:-1}
+.hero-pop.p3{left:calc(var(--pop-inset) + 22 * var(--pop-stagger));top:63%;--pop-delay:1.4s;--pop-period:14.5s;--drift:1}
+.hero-pop.p4{right:var(--pop-inset);top:70%;--pop-delay:1.85s;--pop-period:17.5s;--drift:-1}
+
+.hero-pops{--drift-amp:26px}
+@media (min-width:1280px){.hero-pops{--drift-amp:44px}}
 
 @keyframes heroPopIn{
   from{opacity:0;transform:translateY(14px) scale(.97)}
   to{opacity:1;transform:translateY(0) scale(1)}
 }
 @keyframes heroPopFloat{
-  from{transform:translateY(-5px)}
-  to{transform:translateY(5px)}
+  0%,100%{transform:translate(0,0)}
+  22%{transform:translate(calc(var(--drift,1) * var(--drift-amp,26px) * .5),-16px)}
+  48%{transform:translate(calc(var(--drift,1) * var(--drift-amp,26px)),6px)}
+  74%{transform:translate(calc(var(--drift,1) * var(--drift-amp,26px) * .4),20px)}
 }
 
 /* ---------- Reduced motion: everything static ---------- */

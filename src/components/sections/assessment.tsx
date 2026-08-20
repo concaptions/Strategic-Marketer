@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 const STEPS = [
   { h: "Understand Your Growth", p: "We review your business, goals, current systems and how you're using AI today." },
   { h: "Diagnose Growth Gaps", p: "We identify the gaps, bottlenecks and missing foundational intelligence holding AI back." },
-  { h: "Prioritize", p: "We determine where AI can create the greatest near-term business value — for your business specifically." },
+  { h: "Prioritize", p: "We determine where AI can create the greatest near-term business value for your business specifically." },
   { h: "Map", p: "We map the right combination of technology, implementation, automation, training or managed support." },
   { h: "Activate Your Business Intelligence Agent", p: "You get a practical roadmap to move from experimentation to implementation." },
 ];
@@ -44,7 +44,7 @@ export function Assessment() {
             Schedule Your AI Business Assessment
           </a>
           <p className="micro">
-            No pressure and no obligation. If we&apos;re not the right fit, we&apos;ll tell you — and point you in a
+            No pressure and no obligation. If we&apos;re not the right fit, we&apos;ll tell you, and point you in a
             better direction.
           </p>
           <p className="assess-note">

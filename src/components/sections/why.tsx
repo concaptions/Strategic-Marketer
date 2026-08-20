@@ -16,7 +16,7 @@ const stroke = {
 const PIPELINE: { word: string; line: string; icon: ReactNode }[] = [
   {
     word: "Build It",
-    line: "Our own technology — not repackaged third-party tools.",
+    line: "Our own technology, not repackaged third-party tools.",
     icon: (
       <svg viewBox="0 0 24 24" {...stroke}>
         <path d="M14.5 6.5a4 4 0 0 0-5.6 5L4 16.4V20h3.6l4.9-4.9a4 4 0 0 0 5-5.6L14.6 12l-2.6-2.6z" />
@@ -35,7 +35,7 @@ const PIPELINE: { word: string; line: string; icon: ReactNode }[] = [
   },
   {
     word: "Install It",
-    line: "Activated inside your company — not left as advice.",
+    line: "Activated inside your company, not left as advice.",
     icon: (
       <svg viewBox="0 0 24 24" {...stroke}>
         <path d="M12 3v9" />
@@ -136,7 +136,7 @@ export function Why() {
           <div className="eyebrow center">Why Strategic Marketer</div>
           <h2>We Don&apos;t Just Recommend AI. We Build It Into Your Business.</h2>
           <p className="lead" style={{ margin: "1.2rem auto 0" }}>
-            Most consultants hand you a list of AI tools and leave. We do the opposite — and it shows in how we work:
+            Most consultants hand you a list of AI tools and leave. We do the opposite, and it shows in how we work:
           </p>
         </div>
 
@@ -177,7 +177,7 @@ export function Why() {
           <span className="why-punch-mark" aria-hidden="true">
             &ldquo;
           </span>
-          Strategy without systems is a wish list. Systems without strategy is expensive noise. You need both —
+          Strategy without systems is a wish list. Systems without strategy is expensive noise. You need both,
           working together.
         </blockquote>
 
@@ -185,7 +185,7 @@ export function Why() {
           <a className="btn btn-gold" href={site.bookingHref}>
             See What We&apos;d Build for Your Business
           </a>
-          <p className="micro">Starts with one consultative conversation — the AI Business Assessment.</p>
+          <p className="micro">Starts with one consultative conversation: the AI Business Assessment.</p>
         </div>
       </div>
     </section>

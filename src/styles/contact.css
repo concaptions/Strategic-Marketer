@@ -1,0 +1,45 @@
+/* contact: build additions (round 6) — the assessment request form every Schedule CTA points at.
+   Styled after Shahzaib's reference (the exit-intent popup): dark placeholder-only inputs,
+   full-width gold button, fine print. Tokens only. */
+
+.contact{padding-top:80px;padding-bottom:96px;background:var(--night)}
+.contact-head{max-width:720px;margin:0 auto;text-align:center}
+.contact-head .lead{margin:1rem auto 0;max-width:560px}
+
+.contact-card{
+  max-width:640px;margin:2.8rem auto 0;
+  background:linear-gradient(165deg,var(--card-2),var(--card) 60%);
+  border:1px solid var(--line-gold);border-radius:var(--radius);
+  padding:2.4rem 2.4rem 2.1rem;box-shadow:var(--shadow-card),0 0 44px rgba(233,185,92,.08);
+}
+
+.cf-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:.9rem}
+.contact-form input,.contact-form textarea{
+  font-family:var(--body);font-size:.95rem;color:var(--ink);
+  background:rgba(10,15,30,.55);border:1px solid var(--line);border-radius:10px;
+  padding:.85em 1.05em;outline:none;width:100%;
+  transition:border-color .2s ease,box-shadow .2s ease;
+}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:var(--muted-2)}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(233,185,92,.14)}
+.contact-form textarea{resize:vertical;min-height:104px}
+
+.cf-submit{width:100%;margin-top:1.2rem}
+.cf-fine{text-align:center;margin-top:.9rem;font-size:.78rem;color:var(--muted-2)}
+
+.cf-success{text-align:center;padding:2.2rem 1rem}
+.cf-success-ic{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:64px;height:64px;border-radius:50%;color:var(--green);
+  background:rgba(124,194,75,.10);border:1px solid rgba(124,194,75,.4);
+  box-shadow:0 0 26px rgba(124,194,75,.18);
+}
+.cf-success-ic svg{width:30px;height:30px}
+.cf-success h3{margin-top:1.1rem;color:var(--ink)}
+.cf-success p{margin:.6rem auto 0;max-width:440px;color:var(--muted)}
+
+@media (max-width:760px){
+  .contact{padding-top:64px;padding-bottom:72px}
+  .contact-card{padding:1.8rem 1.3rem}
+  .cf-grid{grid-template-columns:1fr}
+}

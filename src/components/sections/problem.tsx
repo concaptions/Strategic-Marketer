@@ -12,13 +12,13 @@ export function Problem() {
             And somehow, nothing has actually changed inside the business.
           </p>
           <p>
-            It&apos;s not a knowledge problem — there&apos;s more AI information available than any owner could
+            It&apos;s not a knowledge problem. There&apos;s more AI information available than any owner could
             consume in a lifetime. It&apos;s an <strong>implementation problem</strong>. Information keeps arriving.
             Systems never get installed.
           </p>
           <p>
             If the cycle on the right feels familiar, you&apos;re not behind. You&apos;re exactly where most
-            established businesses are right now — and it&apos;s fixable.
+            established businesses are right now, and it&apos;s fixable.
           </p>
         </div>
         <ExperimentationCycle />

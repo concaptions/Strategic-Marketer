@@ -11,7 +11,7 @@ export function Method() {
           <h2>The Business Intelligence Agent</h2>
         </div>
         <p className="method-sub">
-          Your agent is the foundation of what makes your business <em>your business</em> — powering every AI system
+          Your agent is the foundation of what makes your business <em>your business</em>, powering every AI system
           that follows.
         </p>
 

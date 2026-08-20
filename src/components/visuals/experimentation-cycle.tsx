@@ -163,7 +163,7 @@ export function ExperimentationCycle() {
       ref={cardRef}
       className={`xf-card${reduce ? " is-static" : ""}`}
       role="img"
-      aria-label="The AI experimentation cycle: watch videos, download prompts, buy courses, subscribe to tools, experiment, get pulled back into the business, start over — and nothing meaningful gets installed"
+      aria-label="The AI experimentation cycle: watch videos, download prompts, buy courses, subscribe to tools, experiment, get pulled back into the business, start over, and nothing meaningful gets installed"
     >
       <div className="loop-title">The Experimentation Cycle</div>
 

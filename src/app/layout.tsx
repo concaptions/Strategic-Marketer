@@ -8,6 +8,7 @@ import "@/styles/stats.css";
 import "@/styles/pov.css";
 import "@/styles/proof.css";
 import "@/styles/why.css";
+import "@/styles/contact.css";
 
 // Same two families and weights as the approved HTML build.
 const archivo = Archivo({

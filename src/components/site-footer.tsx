@@ -9,7 +9,7 @@ export function SiteFooter() {
           <div>
             <Logo size={30} compact />
             <p>
-              We help established businesses identify, install and activate the right AI systems — built around the
+              We help established businesses identify, install and activate the right AI systems, built around the
               way their business actually works.
             </p>
           </div>
@@ -30,7 +30,7 @@ export function SiteFooter() {
             <div className="agency-box" id="agencies">
               <h4>✦ For Agencies</h4>
               <p>
-                Bring proven AI-powered solutions to your clients — without building the technology, systems and
+                Bring proven AI-powered solutions to your clients without building the technology, systems and
                 support infrastructure yourself.
               </p>
               <a href="#agencies">Explore Agency Partnerships →</a>
