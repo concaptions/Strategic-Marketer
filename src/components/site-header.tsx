@@ -35,8 +35,11 @@ export function SiteHeader() {
           </a>
         </nav>
         <div className="nav-cta">
-          <a className="btn btn-gold btn-sm" href={site.bookingHref}>
-            Book Assessment
+          <a className="btn btn-gold btn-sm nav-book" href={site.bookingHref}>
+            {/* Phones show the short label so the wordmark, the button and the
+                menu all fit on one bar (Zuria 2026-08-21). */}
+            <span className="nav-book-long">Book Assessment</span>
+            <span className="nav-book-short">Book Now</span>
           </a>
           <button
             className="hamburger"
