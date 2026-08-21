@@ -542,16 +542,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 40px;background:var(--nig
 .modal .fine{margin-top:1rem;font-size:.75rem;color:var(--muted-2)}
 .modal .success{display:none;color:var(--green);font-weight:600;padding:1rem 0}
 
-/* ============================================================
-   MOBILE STICKY CTA
-   ============================================================ */
-.sticky-cta{
-  display:none;position:fixed;left:0;right:0;bottom:0;z-index:70;
-  padding:.8rem 1rem calc(.8rem + env(safe-area-inset-bottom));
-  background:rgba(10,15,30,.92);backdrop-filter:blur(12px);
-  border-top:1px solid var(--line);
-}
-.sticky-cta .btn{width:100%}
+/* Mobile sticky CTA removed 2026-08-21 (Shahzaib: "the bottom button should not be there"). */
 
 /* ============================================================
    RESPONSIVE
@@ -565,11 +556,10 @@ footer{border-top:1px solid var(--line);padding:64px 0 40px;background:var(--nig
   .foot-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:760px){
-  body{font-size:16px;padding-bottom:76px}
+  body{font-size:16px}
   .nav-links{display:none}
   .hamburger{display:block}
   .nav-cta .btn{display:none}
-  .sticky-cta{display:block}
   .hero{padding:78px 0 64px}
   .stats-grid,.act-grid,.proof-grid,.pillars{grid-template-columns:1fr}
   .trust-grid{grid-template-columns:1fr;gap:1.8rem}
@@ -814,4 +804,66 @@ header{background:#000;backdrop-filter:none;-webkit-backdrop-filter:none}
 .agn-cta .btn-gold{animation:ctaBreath 3.2s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){
   .agn-hero .glow,.agn-cta .btn-gold{animation:none}
+}
+
+/* ============================================================
+   RESPONSIVE FIXES 2026-08-21 (Shahzaib: mobile view review)
+   ============================================================ */
+
+/* 1. Tablets (761-900px) overflowed the viewport by ~37px: the full desktop
+   nav plus the Book Assessment button is wider than the bar. Collapse the
+   links into the existing mobile menu from 900px down; the CTA stays. */
+@media (max-width:900px){
+  .nav-links{display:none}
+  .hamburger{display:block}
+  .mobile-menu{display:none}
+  .mobile-menu.open{display:block}
+}
+/* the old min-width:761px override would have re-hidden the open menu */
+@media (min-width:901px){.mobile-menu{display:none!important}}
+@media (min-width:761px) and (max-width:900px){.mobile-menu.open{display:block!important}}
+
+/* 2. Orbit tooltips ran past the right edge on tablets. Keep them inside. */
+@media (max-width:1024px){
+  .node-tip{width:min(232px,72vw)}
+}
+
+/* 3. Nothing may push the document wider than the screen. */
+@media (max-width:900px){
+  html,body{max-width:100%;overflow-x:hidden}
+  section,footer,header{overflow-x:clip}
+}
+
+/* 4. Comfortable tap targets on touch screens (spacing only, no font-size
+   changes - the type scale stays locked). */
+@media (max-width:760px){
+  .mobile-menu nav a{padding:.85rem 0}
+  .foot-col a{padding:.55rem 0}
+  .hamburger{padding:.2rem .35rem;line-height:1}
+}
+
+/* 5. Orbit tooltips near the stage edges anchor to that edge instead of
+   centring on the node, so they can never run off screen (they did on
+   tablets). Horizontal placement via left/right; transform stays free for
+   the fade-in motion. */
+.node-tip.tip-start{left:0;right:auto;transform:translateY(6px)}
+.node-tip.tip-end{left:auto;right:0;transform:translateY(6px)}
+.node-tip.tip-above.tip-start,.node-tip.tip-above.tip-end{transform:translateY(-6px)}
+.node.is-hot .node-tip.tip-start,.node.is-hot .node-tip.tip-end{transform:translateY(0)}
+
+/* 6. Footer signature wrapped onto two lines on phones and the wide letter
+   spacing made the lines collide. Give it room and centre it (spacing only). */
+@media (max-width:760px){
+  .foot-base{justify-content:center;text-align:center;gap:1.2rem}
+  .foot-mark{line-height:2;word-spacing:.1em}
+  .foot-mark span{display:inline-block;margin:0 .5em}
+}
+
+/* 7. On phones the marquee's 8% edge fade is only ~30px, so industry names
+   looked chopped off. Widen the fade so the scroll reads as intended. */
+@media (max-width:760px){
+  .marquee{
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);
+  }
 }

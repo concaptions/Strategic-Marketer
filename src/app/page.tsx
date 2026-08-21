@@ -1,6 +1,5 @@
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { StickyCta } from "@/components/sticky-cta";
 import { ExitIntent } from "@/components/exit-intent";
 import { Hero } from "@/components/sections/hero";
 import { Trust } from "@/components/sections/trust";
@@ -36,7 +35,6 @@ export default function Home() {
         <ContactSection />
       </main>
       <SiteFooter />
-      <StickyCta />
       <ExitIntent />
     </>
   );

@@ -186,7 +186,7 @@ export function Orbit() {
             >
               {item.label}
             </button>
-            <span id={`tip-${k}`} role="tooltip" className={`node-tip ${below ? "tip-below" : "tip-above"}`}>
+            <span id={`tip-${k}`} role="tooltip" className={`node-tip ${below ? "tip-below" : "tip-above"}${p.x > L.cx + 60 ? " tip-end" : p.x < L.cx - 60 ? " tip-start" : ""}`}>
               <b>{item.label}</b>
               {item.tip}
             </span>
@@ -215,7 +215,7 @@ export function Orbit() {
             >
               {item.label}
             </button>
-            <span id={`tip-${k}`} role="tooltip" className={`node-tip ${below ? "tip-below" : "tip-above"}`}>
+            <span id={`tip-${k}`} role="tooltip" className={`node-tip ${below ? "tip-below" : "tip-above"}${p.x > L.cx + 60 ? " tip-end" : p.x < L.cx - 60 ? " tip-start" : ""}`}>
               <b>{item.label}</b>
               {item.tip}
             </span>
